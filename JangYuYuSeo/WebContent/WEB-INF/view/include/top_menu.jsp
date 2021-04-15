@@ -18,10 +18,10 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a href="${root }main" class="nav-link">Login<span class="sr-only">(current)</span></a>
+        <a href="${root }user/login" class="nav-link">Login<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a href="${root }main" class="nav-link">Join</a>
+        <a href="${root }user/join" class="nav-link">Join</a>
       </li>
       <li class="nav-item">
         <a href="${root }main" class="nav-link">Logout<span class="sr-only">(current)</span></a>
