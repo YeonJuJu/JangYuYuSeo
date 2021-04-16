@@ -163,7 +163,7 @@ iframe {
 
 .limiter {
   width: 100%;
-  margin: 0 auto;
+  margin: 130px auto;
 }
 
 .container-login100 {
@@ -389,6 +389,7 @@ input.input100 {
   display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
+  margin: 0 auto;
 }
 
 .login100-form-btn {
