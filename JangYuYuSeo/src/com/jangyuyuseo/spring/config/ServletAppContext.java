@@ -74,5 +74,6 @@ public class ServletAppContext implements WebMvcConfigurer {
 		SqlSessionFactory factory = factoryBean.getObject();
 		return factory;
 	}
+	
 
 }
