@@ -8,15 +8,11 @@
 
 <div class="nav-scroller py-1 mb-2 fixed-top" style="margin-top:70px">
 		<nav class="nav ml-auto">
-			<a class="p-2 text-muted" href="${root }main">Best!</a> 
-			<a class="p-2 text-muted" href="${root }main">New!</a> 
-			<a class="p-2 text-muted" href="${root }main">Top</a>
-			<a class="p-2 text-muted" href="${root }main">Outer</a>
-			<a class="p-2 text-muted" href="${root }main">One-Piece</a>
-			<a class="p-2 text-muted" href="${root }main">Skirt</a>
-			<a class="p-2 text-muted" href="${root }main">Pants</a>
-			<a class="p-2 text-muted" href="${root }main">Acc</a>
-		
+			
+			<c:forEach var="categoryDTO" items="${categoryList}">
+					<a class="p-2 text-muted" href="${root }category/main?category_idx=${categoryDTO.category_idx}">${categoryDTO.category_name}</a>
+			</c:forEach>
+			
 			<form class="form-inline ml-auto" style="margin-right:0px">
 			    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 			    <button class="btn btn-sm btn-outline-secondary" type="button">Search</button>
