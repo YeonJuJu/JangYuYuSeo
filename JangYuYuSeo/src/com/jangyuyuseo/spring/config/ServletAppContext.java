@@ -4,6 +4,7 @@ import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperFactoryBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -12,12 +13,20 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+<<<<<<< HEAD
 import com.jangyuyuseo.spring.mapper.ProductMapper;
+=======
+import com.jangyuyuseo.spring.interceptor.CategoryInterceptor;
+import com.jangyuyuseo.spring.mapper.CategoryMapper;
+>>>>>>> 08e73efd1238a9835f15b3483b4a0aa4949b23b2
 import com.jangyuyuseo.spring.mapper.UserMapper;
+import com.jangyuyuseo.spring.service.CategoryService;
 
 // Spring MVC 프로젝트에 관련된 설정을 하는 클래스
 
@@ -40,6 +49,9 @@ public class ServletAppContext implements WebMvcConfigurer {
 	@Value("${db.password}")
 	private String db_password;
 
+	@Autowired
+	private CategoryService categoryService;
+	
 	/*
 	 * Controller 에서 return하는 문자열(경로)에 접두사, 접미사 설정하기
 	 */
@@ -95,15 +107,40 @@ public class ServletAppContext implements WebMvcConfigurer {
 		return factoryBean;
 	}
 	
+<<<<<<< HEAD
 	// ProductMapper 등록
 	@Bean
 	public MapperFactoryBean<ProductMapper> getProductMapper(SqlSessionFactory factory) throws Exception{
 		MapperFactoryBean<ProductMapper> factoryBean 
 		  = new MapperFactoryBean<ProductMapper>(ProductMapper.class);
+=======
+	// CategoryMapper 등록
+	@Bean
+	public MapperFactoryBean<CategoryMapper> getCategoryMapper(SqlSessionFactory factory) throws Exception{
+		MapperFactoryBean<CategoryMapper> factoryBean 
+		= new MapperFactoryBean<CategoryMapper>(CategoryMapper.class);
+>>>>>>> 08e73efd1238a9835f15b3483b4a0aa4949b23b2
 		factoryBean.setSqlSessionFactory(factory);
 		return factoryBean;
 	}
 	
+<<<<<<< HEAD
+=======
+	/*
+	 * Interceptor 등록하기
+	 */
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+	    WebMvcConfigurer.super.addInterceptors(registry);
+	  	
+	  	CategoryInterceptor categoryInterceptor = new CategoryInterceptor(categoryService);
+	  	
+	  	InterceptorRegistration reg1 = registry.addInterceptor(categoryInterceptor);
+	  	
+	  	reg1.addPathPatterns("/**");
+	}
+	
+>>>>>>> 08e73efd1238a9835f15b3483b4a0aa4949b23b2
 	
 	/*
 	*properties 폴더 안에 있는 properties 파일들이 충돌되지 않도록 개별적으로 관리해 주는 Bean

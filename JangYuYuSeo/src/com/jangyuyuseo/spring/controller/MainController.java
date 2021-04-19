@@ -20,12 +20,16 @@ public class MainController {
 	private ProductService productService;
 	
 	@GetMapping("/main")
+<<<<<<< HEAD
 	public String main(Model model) throws Exception {
 	
 		List productList = productService.selectAllProduct();
 		System.out.println(productList);
 		model.addAttribute("productList",productList);
 		
+=======
+	public String main(Model model) {
+>>>>>>> 08e73efd1238a9835f15b3483b4a0aa4949b23b2
 		return "main";
 	}
 }

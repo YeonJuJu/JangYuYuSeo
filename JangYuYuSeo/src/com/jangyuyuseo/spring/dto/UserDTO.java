@@ -32,4 +32,10 @@ public class UserDTO {
 	@NotBlank
 	private String user_phone;
 	
+	private boolean inputUserID;
+	
+	public UserDTO() {
+		this.inputUserID = false;
+	}
+	
 }
