@@ -48,7 +48,32 @@
 <link rel="stylesheet" type="text/css" href="${root}css/util.css">
 <link rel="stylesheet" type="text/css" href="${root}css/main.css?after">
 <!--===============================================================================================-->
-
+<script type="text/javascript">
+	function checkID(){
+		const user_id = $("#user_id").val();
+		
+		if(user_id.length == 0){
+			alert('아이디를 입력해주세요.');
+			return;
+		}
+		
+		$.ajax({
+			url: '${root}user/checkID/' + user_id,
+			type: 'get',
+			dataType: 'text',
+			success: function(result){ //callback 함수
+				if(result == 'true'){
+					alert("사용가능한 아이디입니다.");
+					$('#inputUserID').val('true');
+				}
+				else{
+					alert("이미 존재하는 아이디입니다.");
+					$('#inputUserID').val('false');
+				}
+			}
+		})
+	}
+</script>
 </head>
 <body>
 	<!-- 상단 메뉴 -->
@@ -65,6 +90,10 @@
 				</div>
 
 				<form:form action="${root }user/join_proc" method="post" modelAttribute="joinUserDTO" class="login100-form validate-form">
+					<form:hidden path="inputUserID" />
+					<div class="flex-sb-m w-full p-b-0 p-l-0">
+						<button type="button" class="txt1" onClick="checkID();">ID duplicate check</button>
+					</div>
 					
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
 						<span class="label-input100">ID</span> 
@@ -72,10 +101,10 @@
 						<span class="focus-input100"></span>
 						<form:errors path="user_id" style="color:red;" />
 					</div>
-
+					
 					<div class="wrap-input100 validate-input m-b-18" data-validate="Password is required">
 						<span class="label-input100">Password</span> 
-						<form:input path="user_password" class="input100" placeholder="Enter password"/> 
+						<form:password path="user_password" class="input100" placeholder="Enter password"/> 
 						<span class="focus-input100"></span>
 						<form:errors path="user_password" style="color:red;" />
 					</div>
@@ -111,6 +140,7 @@
 						<form:button class="login100-form-btn">Sign Up</form:button>
 					</div>
 				</form:form>
+				
 			</div>
 		</div>
 	</div>

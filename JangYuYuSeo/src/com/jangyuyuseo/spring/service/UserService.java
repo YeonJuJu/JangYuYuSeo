@@ -14,4 +14,15 @@ public class UserService {
 	public void addUserInfo(UserDTO joinUserDTO) {
 		userDAO.addUserInfo(joinUserDTO);
 	}
+	
+	public boolean checkID(String user_id) {
+		String checking_id = userDAO.checkID(user_id);
+		
+		if(checking_id == null) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 }
