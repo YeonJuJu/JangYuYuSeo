@@ -16,6 +16,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.jangyuyuseo.spring.mapper.ProductMapper;
 import com.jangyuyuseo.spring.mapper.UserMapper;
 
 // Spring MVC 프로젝트에 관련된 설정을 하는 클래스
@@ -93,6 +94,16 @@ public class ServletAppContext implements WebMvcConfigurer {
 		factoryBean.setSqlSessionFactory(factory);
 		return factoryBean;
 	}
+	
+	// ProductMapper 등록
+	@Bean
+	public MapperFactoryBean<ProductMapper> getProductMapper(SqlSessionFactory factory) throws Exception{
+		MapperFactoryBean<ProductMapper> factoryBean 
+		  = new MapperFactoryBean<ProductMapper>(ProductMapper.class);
+		factoryBean.setSqlSessionFactory(factory);
+		return factoryBean;
+	}
+	
 	
 	/*
 	*properties 폴더 안에 있는 properties 파일들이 충돌되지 않도록 개별적으로 관리해 주는 Bean
