@@ -74,11 +74,12 @@
 					<div class="wrap-input100 validate-input m-b-26"
 						data-validate="Username is required">
 						<span class="label-input100">카테고리</span>
-						<select name="category" >
-    							<option value="outer">outer</option>
-    							<option value="top">top</option>
-  								<option value="pants">pants</option>
-  						</select>
+						<form:select path="pr_category" >
+							<c:forEach var="category" items="${categoryList}">
+    							<option value=${category.category_idx}>${category.category_name}</option>
+							</c:forEach>
+  						</form:select>
+  				
 					</div>
 					
 					<div class="wrap-input100 validate-input m-b-26"

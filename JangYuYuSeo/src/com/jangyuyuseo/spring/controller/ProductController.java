@@ -1,5 +1,7 @@
 package com.jangyuyuseo.spring.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jangyuyuseo.spring.dto.ProductDTO;
 import com.jangyuyuseo.spring.dto.UserDTO;
+import com.jangyuyuseo.spring.service.CategoryService;
 import com.jangyuyuseo.spring.service.ProductService;
 
 @Controller
@@ -21,9 +24,13 @@ public class ProductController {
 	
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private CategoryService categoryService;
 	
 	@GetMapping("/register")
 	public String register(Model model) {
+		List categoryList = categoryService.getCategoryList();
+		model.addAttribute("categoryList",categoryList);
 		model.addAttribute("productDTO",new ProductDTO());
 		return "product/register";
 	}
