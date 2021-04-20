@@ -18,4 +18,8 @@ public class CategoryService {
 		
 		return categoryList;
 	}
+	
+	public String getCategoryName(int category_idx) {
+		return categoryDAO.getCategoryName(category_idx);
+	}
 }

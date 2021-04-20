@@ -18,6 +18,11 @@ public class ProductService {
 		return productDAO.selectAllProduct();
 	}
 	
+	public List<ProductDTO> selectCategoryProduct(int category_idx) throws Exception {
+		return productDAO.selectCategoryProduct(category_idx);
+	}
+	
+	
 	public void addProduct(ProductDTO productDTO) {
 		productDAO.addProduct(productDTO);
 	}
