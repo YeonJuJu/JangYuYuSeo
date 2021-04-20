@@ -11,4 +11,7 @@ public interface UserMapper {
 
 	@Select("SELECT USER_NAME FROM USER_TABLE WHERE USER_ID = #{user_id}")
 	public String checkID(String user_id);
+
+	@Select("SELECT USER_IDX, USER_NAME FROM USER_TABLE WHERE USER_ID=#{user_id} AND USER_PASSWORD=#{user_password}")
+	public UserDTO getLoginUser(UserDTO loginUserDTO);
 }

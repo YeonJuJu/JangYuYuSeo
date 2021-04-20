@@ -1,5 +1,7 @@
 package com.jangyuyuseo.spring.config;
 
+import javax.annotation.Resource;
+
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -23,6 +25,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.jangyuyuseo.spring.mapper.CategoryMapper;
 import com.jangyuyuseo.spring.mapper.ProductMapper;
 import com.jangyuyuseo.spring.mapper.UserMapper;
+import com.jangyuyuseo.spring.dto.UserDTO;
 import com.jangyuyuseo.spring.interceptor.CategoryInterceptor;
 import com.jangyuyuseo.spring.service.CategoryService;
 // Spring MVC 프로젝트에 관련된 설정을 하는 클래스
@@ -49,6 +52,9 @@ public class ServletAppContext implements WebMvcConfigurer {
 	@Autowired
 	private CategoryService categoryService;
 
+	@Resource(name="loginUserDTO")
+	private UserDTO loginUserDTO;
+	
 	/*
 	 * Controller 에서 return하는 문자열(경로)에 접두사, 접미사 설정하기
 	 */
@@ -130,7 +136,7 @@ public class ServletAppContext implements WebMvcConfigurer {
 	public void addInterceptors(InterceptorRegistry registry) {
 	    WebMvcConfigurer.super.addInterceptors(registry);
 	  	
-	  	CategoryInterceptor categoryInterceptor = new CategoryInterceptor(categoryService);
+	  	CategoryInterceptor categoryInterceptor = new CategoryInterceptor(categoryService, loginUserDTO);
 	  	
 	  	InterceptorRegistration reg1 = registry.addInterceptor(categoryInterceptor);
 	  	

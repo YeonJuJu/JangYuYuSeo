@@ -16,25 +16,29 @@
   </button>
    <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a href="${root }user/login" class="nav-link">Login<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a href="${root }user/join" class="nav-link">Join</a>
-      </li>
-      <li class="nav-item">
-        <a href="${root }main" class="nav-link">Logout<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a href="${root }main" class="nav-link">MyPage</a>
-      </li>
+      <c:choose>
+      	<c:when test="${loginUserDTO.userLogin == true }">
+      		<li class="nav-item">
+        		<a href="${root }main" class="nav-link">Logout<span class="sr-only">(current)</span></a>
+      		</li>
+      		<li class="nav-item">
+        		<a href="${root }main" class="nav-link">MyPage</a>
+      		</li>
+      	</c:when>
+      	<c:otherwise>
+      		<li class="nav-item">
+        		<a href="${root }user/login" class="nav-link">Login<span class="sr-only">(current)</span></a>
+      		</li>
+      		<li class="nav-item">
+        		<a href="${root }user/join" class="nav-link">Join</a>
+      		</li>
+      	</c:otherwise>
+      </c:choose>
       <li class="nav-item">
         <a href="${root }main" class="nav-link">Shopping Basket</a>
       </li>
     </ul>
   </div>
-
-	
 </nav>
 
 

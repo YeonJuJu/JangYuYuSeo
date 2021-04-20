@@ -19,4 +19,9 @@ public class UserDAO {
 		String checking_id = userMapper.checkID(user_id);
 		return checking_id;
 	}
+	
+	public UserDTO getLoginUser(UserDTO loginUserDTO) {
+		UserDTO fromDBUserDTO = userMapper.getLoginUser(loginUserDTO);
+		return fromDBUserDTO;
+	}
 }

@@ -10,8 +10,7 @@ import lombok.Setter;
 @Setter @Getter
 public class UserDTO {
 	private int user_idx;
-	
-	@NotBlank
+
 	@Size(min=2, max=6)
 	@Pattern(regexp = "[가-힣]*")
 	private String user_name;
@@ -25,11 +24,9 @@ public class UserDTO {
 	@Size(min=4, max=20)
 	@Pattern(regexp = "[a-zA-Z0-9]*")
 	private String user_password;
-	
-	@NotBlank
+
 	private String user_address;
-	
-	@NotBlank
+
 	private String user_phone;
 	
 	private boolean inputUserID;

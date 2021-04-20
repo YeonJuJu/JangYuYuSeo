@@ -1,9 +1,11 @@
 package com.jangyuyuseo.spring.controller;
 
+import javax.annotation.Resource;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jangyuyuseo.spring.dto.UserDTO;
 import com.jangyuyuseo.spring.service.UserService;
@@ -22,8 +25,14 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	@Resource(name="loginUserDTO")
+	private UserDTO loginUserDTO;
+	
 	@GetMapping("/login")
-	public String login(@ModelAttribute("loginUserDTO") UserDTO loginUserDTO) {
+	public String login(@ModelAttribute("loginUserDTO") UserDTO loginUserDTO, @RequestParam(value="failure", defaultValue="false") boolean failure, Model model) {
+		
+		model.addAttribute("failure", failure);
+		
 		return "user/login";
 	}
 	
@@ -34,7 +43,13 @@ public class UserController {
 			return "user/login";
 		}
 		
-		return "user/login_success";
+		userService.getLoginUser(loginUserDTO);
+		
+		if(loginUserDTO.isUserLogin() == true) {
+			return "user/login_success";
+		}else {
+			return "user/login_failure";
+		}
 	}
 	
 	@GetMapping("/join")

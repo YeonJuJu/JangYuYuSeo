@@ -5,7 +5,8 @@
 <!-- 절대 경로 설정 -->
 <c:url var="root" value="/" />
 
-<script>
-  alert('로그인 되었습니다')
-  location.href = '${root}main'
-</script>
+<script type="text/javascript">
+  alert('로그인에 실패했습니다');
+  location.href='${root}user/login?failure=true';
+</script> 
+
