@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.jangyuyuseo.spring.dto.UserDTO;
 import com.jangyuyuseo.spring.service.UserService;
 import com.jangyuyuseo.spring.validator.UserValidator;
-
 @Controller
 @RequestMapping("/user")
 public class UserController {
