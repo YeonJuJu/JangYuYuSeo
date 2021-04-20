@@ -29,7 +29,9 @@ public class UserController {
 	private UserDTO loginUserDTO;
 	
 	@GetMapping("/login")
-	public String login(@ModelAttribute("loginUserDTO") UserDTO loginUserDTO, @RequestParam(value="failure", defaultValue="false") boolean failure, Model model) {
+	public String login(@ModelAttribute("tmpLoginUserDTO") UserDTO tmpLoginUserDTO, @RequestParam(value="failure", defaultValue="false") boolean failure, Model model) {
+		
+		System.out.println("isloginUser() in login controller == " + loginUserDTO.isUserLogin());
 		
 		model.addAttribute("failure", failure);
 		
@@ -37,13 +39,13 @@ public class UserController {
 	}
 	
 	@PostMapping("login_proc")
-	public String loginProc(@Valid @ModelAttribute("loginUserDTO") UserDTO loginUserDTO, BindingResult result) {
+	public String loginProc(@Valid @ModelAttribute("tmpLoginUserDTO") UserDTO tmpLoginUserDTO, BindingResult result) {
 		
 		if(result.hasErrors()) {
 			return "user/login";
 		}
 		
-		userService.getLoginUser(loginUserDTO);
+		userService.getLoginUser(tmpLoginUserDTO);
 		
 		if(loginUserDTO.isUserLogin() == true) {
 			return "user/login_success";
@@ -52,8 +54,15 @@ public class UserController {
 		}
 	}
 	
+	@GetMapping("/logout")
+	public String logout() {
+		loginUserDTO.setUserLogin(false);
+		return "logout";
+	}
+	
 	@GetMapping("/join")
 	public String join(@ModelAttribute("joinUserDTO") UserDTO joinUserDTO) {
+		System.out.println("isloginUser() in join controller == " + loginUserDTO.isUserLogin());
 		return "user/join";
 	}
 	

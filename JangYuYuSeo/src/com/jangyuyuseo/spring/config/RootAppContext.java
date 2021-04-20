@@ -12,7 +12,7 @@ import com.jangyuyuseo.spring.dto.UserDTO;
 @Configuration
 public class RootAppContext {
 	
-	@Bean("loginUserDTO")
+	@Bean(name="loginUserDTO")
 	@SessionScope
 	public UserDTO loginUserDTO() {
 		return new UserDTO();

@@ -17,7 +17,7 @@
    <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
       <c:choose>
-      	<c:when test="${loginUserDTO.userLogin == true }">
+      	<c:when test="${loginUserDTO.isUserLogin()==true }">
       		<li class="nav-item">
         		<a href="${root }main" class="nav-link">Logout<span class="sr-only">(current)</span></a>
       		</li>

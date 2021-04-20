@@ -64,7 +64,7 @@
 					<span class="login100-form-title-1"> Login </span>
 				</div>
 
-				<form:form action="${root }user/login_proc" method="post" modelAttribute="loginUserDTO" class="login100-form validate-form">
+				<form:form action="${root }user/login_proc" method="post" modelAttribute="tmpLoginUserDTO" class="login100-form validate-form">
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
 						<span class="label-input100">ID</span> 
 						<form:input path="user_id" class="input100" placeholder="Enter ID"/> 

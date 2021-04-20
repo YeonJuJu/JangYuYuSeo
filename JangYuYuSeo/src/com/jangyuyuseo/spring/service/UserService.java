@@ -31,9 +31,9 @@ public class UserService {
 		}
 	}
 	
-	public void getLoginUser(UserDTO loginUserDTO) {
+	public void getLoginUser(UserDTO tmlLoginUserDTO) {
 	
-		UserDTO fromDBUserDTO = userDAO.getLoginUser(loginUserDTO);
+		UserDTO fromDBUserDTO = userDAO.getLoginUser(tmlLoginUserDTO);
 		
 		if(fromDBUserDTO != null) {
 			loginUserDTO.setUser_idx(fromDBUserDTO.getUser_idx());

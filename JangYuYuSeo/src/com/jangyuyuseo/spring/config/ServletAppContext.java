@@ -33,7 +33,7 @@ import com.jangyuyuseo.spring.service.CategoryService;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = { "com.jangyuyuseo.spring.controller", "com.jangyuyuseo.spring.dao",
-		"com.jangyuyuseo.spring.service" })
+		"com.jangyuyuseo.spring.service", "com.jangyuyuseo.spring.dto" })
 @PropertySource("/WEB-INF/properties/db.properties")
 public class ServletAppContext implements WebMvcConfigurer {
 
@@ -141,6 +141,7 @@ public class ServletAppContext implements WebMvcConfigurer {
 	  	InterceptorRegistration reg1 = registry.addInterceptor(categoryInterceptor);
 	  	
 	  	reg1.addPathPatterns("/**");
+	  	
 	}
 	
 	
