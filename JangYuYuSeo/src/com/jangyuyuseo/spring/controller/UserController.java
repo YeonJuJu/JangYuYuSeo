@@ -31,8 +31,6 @@ public class UserController {
 	@GetMapping("/login")
 	public String login(@ModelAttribute("tmpLoginUserDTO") UserDTO tmpLoginUserDTO, @RequestParam(value="failure", defaultValue="false") boolean failure, Model model) {
 		
-		System.out.println("isloginUser() in login controller == " + loginUserDTO.isUserLogin());
-		
 		model.addAttribute("failure", failure);
 		
 		return "user/login";
@@ -57,7 +55,7 @@ public class UserController {
 	@GetMapping("/logout")
 	public String logout() {
 		loginUserDTO.setUserLogin(false);
-		return "logout";
+		return "user/logout";
 	}
 	
 	@GetMapping("/join")

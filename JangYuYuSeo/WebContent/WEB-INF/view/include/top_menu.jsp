@@ -19,7 +19,7 @@
       <c:choose>
       	<c:when test="${loginUserDTO.isUserLogin()==true }">
       		<li class="nav-item">
-        		<a href="${root }main" class="nav-link">Logout<span class="sr-only">(current)</span></a>
+        		<a href="${root }user/logout" class="nav-link">Logout<span class="sr-only">(current)</span></a>
       		</li>
       		<li class="nav-item">
         		<a href="${root }main" class="nav-link">MyPage</a>
@@ -34,6 +34,9 @@
       		</li>
       	</c:otherwise>
       </c:choose>
+      <li class="nav-item">
+        	<a href="${root }user/logout" class="nav-link">Logout<span class="sr-only">(current)</span></a>
+      </li>
       <li class="nav-item">
         <a href="${root }main" class="nav-link">Shopping Basket</a>
       </li>
