@@ -16,9 +16,12 @@ public class UserValidator implements Validator{
 	public void validate(Object target, Errors errors) {
 		
 		UserDTO userDTO = (UserDTO)target;
+		String dtoName = errors.getObjectName();
 		
-		if(userDTO.isInputUserID() == false) {
-			errors.rejectValue("user_id", "DontCheckUserIdExist");
+		if(dtoName.equals("joinUserDTO")) {
+			if(userDTO.isInputUserID() == false) {
+				errors.rejectValue("user_id", "DontCheckUserIdExist");
+			}
 		}
 	}
 

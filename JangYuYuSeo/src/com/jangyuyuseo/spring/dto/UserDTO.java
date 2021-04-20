@@ -33,9 +33,11 @@ public class UserDTO {
 	private String user_phone;
 	
 	private boolean inputUserID;
+	private boolean userLogin;
 	
 	public UserDTO() {
 		this.inputUserID = false;
+		this.userLogin = false;
 	}
 	
 }

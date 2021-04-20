@@ -23,8 +23,18 @@ public class UserController {
 	private UserService userService;
 	
 	@GetMapping("/login")
-	public String login() {
+	public String login(@ModelAttribute("loginUserDTO") UserDTO loginUserDTO) {
 		return "user/login";
+	}
+	
+	@PostMapping("login_proc")
+	public String loginProc(@Valid @ModelAttribute("loginUserDTO") UserDTO loginUserDTO, BindingResult result) {
+		
+		if(result.hasErrors()) {
+			return "user/login";
+		}
+		
+		return "user/login_success";
 	}
 	
 	@GetMapping("/join")
