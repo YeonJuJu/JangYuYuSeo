@@ -62,7 +62,7 @@
 					<span class="login100-form-title-1"> Password Check </span>
 				</div>
 
-				<form:form action="${root }user/myPage_proc" method="post" modelAttribute="checkUserDTO" class="login100-form validate-form">
+				<form:form action="${root }user/before_modify_proc" method="post" modelAttribute="checkUserDTO" class="login100-form validate-form">
 
 					<div class="wrap-input100 validate-input m-b-18" data-validate="Password is required">
 						<span class="label-input100">Password</span> 

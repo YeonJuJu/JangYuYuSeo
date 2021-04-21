@@ -76,26 +76,8 @@ public class UserController {
 	}
 	
 	@GetMapping("/myPage")
-	public String myPage(@ModelAttribute("checkUserDTO") UserDTO checkUserDTO) {
-		return "/user/before_modify";
-	}
-	
-	@PostMapping("/myPage_proc")
-	public String myPageProc(@ModelAttribute("checkUserDTO") UserDTO checkUserDTO, @ModelAttribute("modifyUserDTO") UserDTO modifyUserDTO, BindingResult result) {
-		 
-		if(result.hasErrors()) {
-			 return "user/before_modify";
-		 }
-		 
-		 checkUserDTO.setUser_idx(loginUserDTO.getUser_idx());
-		 checkUserDTO.setUser_name(loginUserDTO.getUser_name());
-		 
-		 //modifyUserDTO = UserService.getUserInfo(checkUserDTO);
-		 //이제 이 결과를 modifyUserDTO에 받아서 넘김. model 선언해서 넘겨줘야 할듯..? 아닌가~_~
-		 //위 결과 null이면 비밀번호를 다시 확인해주세요 라는  password check fail 넘겨주고 , 아니라면  modify 화면으로 넘어감
-		 //modify, modify_proc 생성해야함
-		
-		 return "modify";
+	public String myPage() {
+		return "/user/myPage";
 	}
 	
 	@InitBinder
