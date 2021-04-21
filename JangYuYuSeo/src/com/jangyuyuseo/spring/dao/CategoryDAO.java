@@ -17,4 +17,8 @@ public class CategoryDAO {
 		List<CategoryDTO> categoryList = categoryMapper.getCategoryList();
 		return categoryList;
 	}
+	
+	public String getCategoryName(int category_idx) {
+		return categoryMapper.getCategoryName(category_idx);
+	}
 }

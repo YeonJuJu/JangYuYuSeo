@@ -21,11 +21,15 @@ public class ProductDAO {
 		return productMapper.selectAllProduct();
 	}
 	
+	public List<ProductDTO> selectCategoryProduct(int category_idx){
+		return productMapper.selectCategoryProduct(category_idx);
+		
+	}
+	
 	public void addProduct(ProductDTO productDTO) {
 		productDTO.setPr_sales(0);
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
 		productDTO.setPr_date(dateFormat.format(Calendar.getInstance().getTime()));
-		productDTO.setPr_image(new byte[3]);
 		productMapper.addProdcut(productDTO);
 	}
 	

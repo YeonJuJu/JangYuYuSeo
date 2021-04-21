@@ -10,7 +10,7 @@
 		<nav class="nav ml-auto">
 			
 			<c:forEach var="categoryDTO" items="${categoryList}">
-					<a class="p-2 text-muted" href="${root }category/main?category_idx=${categoryDTO.category_idx}">${categoryDTO.category_name}</a>
+					<a class="p-2 text-muted" href="${root }main?category_idx=${categoryDTO.category_idx}">${categoryDTO.category_name}</a>
 			</c:forEach>
 			
 			<form class="form-inline ml-auto" style="margin-right:0px">
