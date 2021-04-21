@@ -35,8 +35,8 @@ public class ProductController {
 	
 	@GetMapping("/register")
 	public String register(Model model) {
-		List categoryList = categoryService.getCategoryList();
-		model.addAttribute("categoryList",categoryList);
+		List categoryList = categoryService.getCategoryList2();
+		model.addAttribute("categoryList2",categoryList);
 		model.addAttribute("productDTO",new ProductDTO());
 		return "product/register";
 	}

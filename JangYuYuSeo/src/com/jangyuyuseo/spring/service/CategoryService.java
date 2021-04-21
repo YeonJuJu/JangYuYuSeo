@@ -19,6 +19,14 @@ public class CategoryService {
 		return categoryList;
 	}
 	
+	
+	//new,best제외한 카테고리 리스트 
+	public List<CategoryDTO> getCategoryList2(){
+		List<CategoryDTO> categoryList = categoryDAO.getCategoryList2();
+		
+		return categoryList;
+	}
+	
 	public String getCategoryName(int category_idx) {
 		return categoryDAO.getCategoryName(category_idx);
 	}

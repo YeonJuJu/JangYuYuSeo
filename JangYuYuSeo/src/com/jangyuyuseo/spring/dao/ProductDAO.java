@@ -21,6 +21,14 @@ public class ProductDAO {
 		return productMapper.selectAllProduct();
 	}
 	
+	public List<ProductDTO> selectNewProduct(){
+		return productMapper.selectNewProduct();
+	}
+	
+	public List<ProductDTO> selectBestProduct(){
+		return productMapper.selectBestProduct();
+	}
+	
 	public List<ProductDTO> selectCategoryProduct(int category_idx){
 		return productMapper.selectCategoryProduct(category_idx);
 		

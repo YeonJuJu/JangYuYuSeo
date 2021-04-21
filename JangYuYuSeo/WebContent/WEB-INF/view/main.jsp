@@ -3,6 +3,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<%
+
+response.setHeader("Pragma","no-cache"); 
+
+response.setDateHeader("Expires",0); 
+
+response.setHeader("Cache-Control", "no-cache");
+
+%>
+
+
 
 <!DOCTYPE html>
 <html lang="ko">

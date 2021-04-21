@@ -14,6 +14,7 @@ import com.jangyuyuseo.spring.service.CategoryService;
 import com.jangyuyuseo.spring.service.ProductService;
 import com.jangyuyuseo.spring.service.UserService;
 
+
 @Controller
 public class MainController {
 
@@ -26,6 +27,7 @@ public class MainController {
 	@GetMapping("/main")
 	public String main(@RequestParam(value="category_idx",required=false, defaultValue="0") int category_idx, Model model) throws Exception {
 		
+		System.out.println(category_idx);
 		List productList; 
 		String category;
 		if(category_idx==0) {
@@ -33,9 +35,15 @@ public class MainController {
 			category = "Total";
 		}
 		else {
-			productList = productService.selectCategoryProduct(category_idx);
+			if(category_idx==1)
+				productList = productService.selectBestProduct();
+			else if(category_idx==2)
+				productList = productService.selectNewProduct();
+			else
+				productList = productService.selectCategoryProduct(category_idx);
 			category = categoryService.getCategoryName(category_idx);
 		}
+		
 		model.addAttribute("productList",productList);
 		model.addAttribute("category",category);
 		
