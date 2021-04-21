@@ -9,6 +9,12 @@ public interface ProductMapper {
 	
 	@Select("select * from product_table")
 	public List<ProductDTO> selectAllProduct();
+
+	@Select("select * from (select * from product_table order by pr_sales desc) where rownum <= 6")
+	public List<ProductDTO> selectBestProduct();
+
+	@Select("select * from (select * from product_table order by pr_date desc) where rownum <= 6")
+	public List<ProductDTO> selectNewProduct();
 	
 	@Select("select * from product_table where pr_category=#{category_idx}")
 	public List<ProductDTO> selectCategoryProduct(int category_idx);

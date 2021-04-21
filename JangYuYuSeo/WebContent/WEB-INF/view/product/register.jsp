@@ -75,7 +75,7 @@
 						data-validate="Username is required">
 						<span class="label-input100">카테고리</span>
 						<form:select path="pr_category" >
-							<c:forEach var="category" items="${categoryList}">
+							<c:forEach var="category" items="${categoryList2}">
     							<option value=${category.category_idx}>${category.category_name}</option>
 							</c:forEach>
   						</form:select>

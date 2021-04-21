@@ -24,20 +24,12 @@ public class MainController {
 	private CategoryService categoryService;
 	
 	@GetMapping("/main")
-	public String main(@RequestParam(value="category_idx",required=false, defaultValue="0") int category_idx, Model model) throws Exception {
+	public String main(Model model) throws Exception {
 		
-		List productList; 
-		String category;
-		if(category_idx==0) {
-			productList = productService.selectAllProduct();
-			category = "Total";
-		}
-		else {
-			productList = productService.selectCategoryProduct(category_idx);
-			category = categoryService.getCategoryName(category_idx);
-		}
-		model.addAttribute("productList",productList);
-		model.addAttribute("category",category);
+		List bestProductList = productService.selectBestProduct();
+		List newProductList = productService.selectNewProduct();
+		model.addAttribute("bestProductList",bestProductList);
+		model.addAttribute("newProductList",newProductList);
 		
 		return "main";
 	}
