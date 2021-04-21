@@ -1,0 +1,21 @@
+=============================================================
+update(2021.04.16)
+
+create sequence user_seq
+start with 1
+increment by 1
+minvalue 0;
+
+drop table user_table purge;
+create table user_table(
+  user_idx   number  constraint user_pk primary key,
+  user_name  varchar2(50) not null,
+  user_id    varchar2(100) unique not null,
+  user_password    varchar2(100) not null,
+  user_address varchar2(200) not null,
+  user_phone varchar2(100) not null
+);
+
+commit;
+
+=============================================================

@@ -1,0 +1,21 @@
+=============================================================
+update(2021.04.21)
+
+drop table category_table purge;
+create table category_table(
+  category_idx   number  constraint category_pk primary key,
+  category_name  varchar2(500) not null
+);
+
+insert into category_table values(1, 'Best!');
+insert into category_table values(2, 'New!');
+insert into category_table values(3, 'Top');
+insert into category_table values(4, 'Outer');
+insert into category_table values(5, 'One-Piece');
+insert into category_table values(6, 'Skirt');
+insert into category_table values(7, 'Pants');
+insert into category_table values(8, 'Acc');
+
+commit;
+
+=============================================================

@@ -1,0 +1,23 @@
+=============================================================
+update(2021.04.20)
+
+create sequence product_seq
+start with 1
+increment by 1
+minvalue 0;
+
+create table product_table(
+  pr_id number primary key,
+  pr_name varchar2(100) not null,
+  pr_description varchar2(300) unique not null,
+  pr_price number not null,
+  pr_size varchar(100) not null,
+  pr_color varchar(100) not null,
+  pr_image blob not null,
+  pr_detail varchar2(4000) not null,
+  pr_stock number not null,
+  pr_sales number not null,
+  pr_date date not null
+);
+
+=============================================================
