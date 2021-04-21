@@ -29,4 +29,8 @@ public class UserDAO {
 		UserDTO modifyUserInfo = userMapper.getUserInfo(checkUserDTO);
 		return modifyUserInfo;
 	}
+	
+	public void modifyUserInfo(UserDTO modifyUserDTO) {
+		userMapper.modifyUserInfo(modifyUserDTO);
+	}
 }

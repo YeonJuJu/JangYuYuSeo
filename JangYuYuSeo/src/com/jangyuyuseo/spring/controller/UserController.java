@@ -101,23 +101,22 @@ public class UserController {
 			return "user/before_modify_check_failure";
 		}
 		
-		return "user/before_modify_check_success";
+		return "user/modify";
 	}
 	
 	@GetMapping("/modify")
-	public String modify(@ModelAttribute("modifyUserDTO") UserDTO modifyUserDTO) {
-		
-		System.out.println("modifyUserDTO.name = " + modifyUserDTO.getUser_name());
-		
+	public String modify(@ModelAttribute("modifyUserDTO") UserDTO modifyUserDTO) {		
 		return "user/modify";
 	}
 	
 	@PostMapping("/modify_proc")
-	public String modifyProc(@ModelAttribute("modifyUserDTO") UserDTO modifyUserDTO, BindingResult result) {
+	public String modifyProc(@Valid @ModelAttribute("modifyUserDTO") UserDTO modifyUserDTO, BindingResult result) {
 		
 		if(result.hasErrors()){
 			return "user/modify";
 		}
+		
+		userService.modifyUserInfo(modifyUserDTO);
 		
 		return "user/modify_success";
 	}

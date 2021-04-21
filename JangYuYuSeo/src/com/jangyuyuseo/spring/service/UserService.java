@@ -55,4 +55,9 @@ public class UserService {
 		}
 
 	}
+	
+	public void modifyUserInfo(UserDTO modifyUserDTO) {
+		modifyUserDTO.setUser_idx(loginUserDTO.getUser_idx());
+		userDAO.modifyUserInfo(modifyUserDTO);
+	}
 }

@@ -2,6 +2,7 @@ package com.jangyuyuseo.spring.mapper;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.jangyuyuseo.spring.dto.UserDTO;
 
@@ -17,4 +18,7 @@ public interface UserMapper {
 	
 	@Select("SELECT * FROM USER_TABLE WHERE USER_IDX=#{user_idx} AND USER_NAME=#{user_name} AND USER_PASSWORD=#{user_password}")
 	public UserDTO getUserInfo(UserDTO checkUserDTO);
+	
+	@Update("UPDATE USER_TABLE SET USER_PASSWORD=#{user_password}, USER_NAME=#{user_name}, USER_ADDRESS=#{user_address}, USER_PHONE=#{user_phone} WHERE USER_IDX=#{user_idx}")
+	public void modifyUserInfo(UserDTO modifyUserDTO);
 }
