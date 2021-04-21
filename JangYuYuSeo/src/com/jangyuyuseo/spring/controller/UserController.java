@@ -80,6 +80,48 @@ public class UserController {
 		return "/user/myPage";
 	}
 	
+	@GetMapping("/before_modify")
+	public String beforeModify(@ModelAttribute("checkUserDTO") UserDTO checkUserDTO) {
+		return "user/before_modify";
+	}
+	
+	@PostMapping("/before_modify_proc")
+	public String beforeModifyProc(@ModelAttribute("checkUserDTO") UserDTO checkUserDTO, @ModelAttribute("modifyUserDTO") UserDTO modifyUserDTO, BindingResult result) {
+		
+		if(result.hasErrors()) {
+			return "user/before_modify";
+		}
+		
+		checkUserDTO.setUser_idx(loginUserDTO.getUser_idx());
+		checkUserDTO.setUser_name(loginUserDTO.getUser_name());
+		
+		userService.getUserInfo(modifyUserDTO, checkUserDTO);
+		
+		if(modifyUserDTO.getUser_idx() != loginUserDTO.getUser_idx()) {
+			return "user/before_modify_check_failure";
+		}
+		
+		return "user/before_modify_check_success";
+	}
+	
+	@GetMapping("/modify")
+	public String modify(@ModelAttribute("modifyUserDTO") UserDTO modifyUserDTO) {
+		
+		System.out.println("modifyUserDTO.name = " + modifyUserDTO.getUser_name());
+		
+		return "user/modify";
+	}
+	
+	@PostMapping("/modify_proc")
+	public String modifyProc(@ModelAttribute("modifyUserDTO") UserDTO modifyUserDTO, BindingResult result) {
+		
+		if(result.hasErrors()){
+			return "user/modify";
+		}
+		
+		return "user/modify_success";
+	}
+	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		UserValidator validator1 = new UserValidator();

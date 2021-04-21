@@ -39,9 +39,9 @@
 								<tr>
 									<th>&nbsp;</th>
 									<th>&nbsp;</th>
-									<th>Name</th>
+									<th style="font-weight:bold; font-size:1em">Name</th>
 									<th>&nbsp;</th>
-									<th>Address</th>
+									<th style="font-weight:bold; font-size:1em">Address</th>
 									<th>&nbsp;</th>
 									<th>&nbsp;</th>
 								</tr>
@@ -61,14 +61,18 @@
 									
 									<td>
 										<div class="email">
-											<span>이름이다 </span> 
-											<span>가입일 : 2021년 04월 21일</span>
+											<span style="font-weight:bold; font-size:1em">이름이다 </span> 
+											<span style="font-weight:bold">가입일 : 2021년 04월 21일</span>
 										</div>
 									</td>
 									
 									<td></td>
 									
-									<td>서울시 동작구 어쩌구동 </td>
+									<td style="font-weight:bold">서울시 동작구 어쩌구동 </td>
+									
+									<td>
+										<a href="${root}user/before_modify" style="font-weight:bold; font-size:1em">edit</a>
+									</td>
 									
 								</tr>
 							</tbody>
@@ -77,9 +81,11 @@
 				</div>
 			</div>
 			
+			<br>
+			
 			<div class="row">
 				<div class="col-md-12">
-					<h3 class="h5 mb-4 text-center">주문내역</h3>
+					<h3 class="h5 mb-4 text-left">Order-List</h3>
 					<div class="table-wrap">
 						<table class="table">
 							<thead class="thead-primary">

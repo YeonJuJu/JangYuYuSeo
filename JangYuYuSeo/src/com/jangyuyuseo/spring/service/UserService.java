@@ -41,4 +41,18 @@ public class UserService {
 			loginUserDTO.setUserLogin(true);
 		}
 	}
+	
+	public void getUserInfo(UserDTO modifyUserDTO, UserDTO checkUserDTO) {
+		UserDTO modifyUserInfo = userDAO.getUserInfo(checkUserDTO);
+		
+		if(modifyUserInfo != null) {
+			modifyUserDTO.setUser_idx(modifyUserInfo.getUser_idx());
+			modifyUserDTO.setUser_id(modifyUserInfo.getUser_id());
+			modifyUserDTO.setUser_password(modifyUserInfo.getUser_password());
+			modifyUserDTO.setUser_address(modifyUserInfo.getUser_address());
+			modifyUserDTO.setUser_name(modifyUserInfo.getUser_name());
+			modifyUserDTO.setUser_phone(modifyUserInfo.getUser_phone());	
+		}
+
+	}
 }
