@@ -18,11 +18,7 @@ public class CategoryDAO {
 		return categoryList;
 	}
 	
-	//new,best 제외한 카테고리스트 
-	public List<CategoryDTO> getCategoryList2(){
-		List<CategoryDTO> categoryList = categoryMapper.getCategoryList2();
-		return categoryList;
-	}
+	
 	
 	public String getCategoryName(int category_idx) {
 		return categoryMapper.getCategoryName(category_idx);
