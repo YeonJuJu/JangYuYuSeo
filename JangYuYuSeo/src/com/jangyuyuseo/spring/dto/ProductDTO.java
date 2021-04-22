@@ -33,6 +33,5 @@ public class ProductDTO {
 	private int pr_sales;
 	private String pr_date;
 	private int pr_category;
-	@NotBlank
 	private String pr_image;
 }

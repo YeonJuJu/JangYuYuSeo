@@ -3,8 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<!-- 절대경로 설정 -->
-<c:url var="root" value="/" />
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -31,17 +29,21 @@
     <!-- 메인 게시판 부분 -->
     <div class="album py-5 bg-light" style="margin-top:130px">
         <div class="container">
-        <h1>${category}</h1>
-          <div class="row">
-          </div>
+        	<h1>상품관리</h1>
+          <div class="row"> </div>
         </div>
+        <div class="container" align="right">
+        	<a  href="${root }register">
+         		<medium class="text-muted">상품등록</medium>
+        	</a>
+        </div>
+        <br></br>
            <div class="container">
             <c:forEach var="product" items="${productList}">
             	<div class="col-md-4" style="display:inline-block">
         			<div class="card mb-4 box-shadow">
-          				<a href="${root}product/display?product_id=${product.pr_id}">
              				<img class="card-img-top" style="height: 225px; width: 100%; display: block;" src="${pageContext.request.contextPath}/${product.pr_image}" data-holder-rendered="true">
-          				</a>
+          				
           				<div class="card-body">
             				<h3>${product.pr_name}</h3> 
             				<p class="card-text">${product.pr_description}</p>
@@ -49,11 +51,18 @@
             				<div class="d-flex justify-content-between align-items-center">
               				<small class="text-muted">${product.pr_size}&nbsp;&nbsp;${product.pr_color}</small>
             				</div>
+            				<a  href="${root }modify?product_id=${product.pr_id}">
+            					<small class="text-muted">수정</small>
+            				</a>
+							<a href = "${root }productDelete?product_id=${product.pr_id}">
+            					<small class="text-muted">삭제</small>
+            				</a>
           				</div>
         			</div>
       			</div>
       		</c:forEach>
           </div>
+        </div>
         </div>
       </div>
       

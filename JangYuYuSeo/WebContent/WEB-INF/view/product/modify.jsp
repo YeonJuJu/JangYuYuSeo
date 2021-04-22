@@ -61,12 +61,12 @@
 			<div class="wrap-login100">
 				<div class="login100-form-title"
 					style="background-image: url(${root}images/bg-02.jpg);">
-					<span class="login100-form-title-1">상품등록</span>
+					<span class="login100-form-title-1">상품수정</span>
 				</div>
-				<form:form action="${root }product/register" method="post" modelAttribute="productDTO" class="login100-form validate-form" enctype="multipart/form-data">
+				<form:form action="${root }product/modify?product_id=${productDTO.pr_id}" method="post" modelAttribute="productDTO" class="login100-form validate-form" enctype="multipart/form-data">
 					<div class="wrap-input100 validate-input m-b-26">
 						<span class="label-input100">상품이름</span> 
-						<form:input path="pr_name" class="input100" placeholder="상품이름 입력"/> 
+						<form:input path="pr_name" class="input100" placeholder="상품이름 입력" value = "${productDTO.pr_name}"/> 
 						<span class="focus-input100"></span>
 						<form:errors path="pr_name" style="color:red;" />
 					</div>
@@ -75,11 +75,12 @@
 						<span class="label-input100">카테고리</span>
 						<form:select path="pr_category" >
 							<c:forEach var="category" items="${categoryList}" begin="2">
-    							<option value=${category.category_idx}>${category.category_name}</option>
+    							<option value=${category.category_idx} ${category.category_idx == productDTO.pr_category ? 'selected="selected"':''} >${category.category_name}</option>
 							</c:forEach>
   						</form:select>
-  				
 					</div>
+					
+					
 					
 					<div class="wrap-input100 validate-input m-b-26">
 						<span class="label-input100">대표 이미지</span>
@@ -90,14 +91,14 @@
 
 					<div class="wrap-input100 validate-input m-b-26">
 						<span class="label-input100">상품 가격</span>
-						<form:input path="pr_price" class="input100" placeholder="상품가격 입력"/>
+						<form:input path="pr_price" class="input100" placeholder="상품가격 입력" value = "${productDTO.pr_price}"/>
 						<span class="focus-input100"></span>
 						<form:errors path="pr_price" style="color:red;" />
 					</div>
 					
 					<div class="wrap-input100 validate-input m-b-26">
 						<span class="label-input100">상품설명</span> 
-						<form:input path="pr_description" class="input100" placeholder="상품설명 입력"/>
+						<form:input path="pr_description" class="input100" placeholder="상품설명 입력" value = "${productDTO.pr_description}"/>
 						<span class="focus-input100"></span>
 						<form:errors path="pr_description" style="color:red;" />
 							
@@ -105,34 +106,34 @@
 					
 					<div class="wrap-input100 validate-input m-b-26"">
 						<span class="label-input100">사이즈</span>
-						<form:input path="pr_size" class="input100" placeholder="상품사이즈 입력(,로 구분하여 입력)"/>
+						<form:input path="pr_size" class="input100" placeholder="상품사이즈 입력(,로 구분하여 입력)"  value = "${productDTO.pr_size}"/>
 						<span class="focus-input100"></span>
 						<form:errors path="pr_size" style="color:red;" />
 					</div>
 					
 					<div class="wrap-input100 validate-input m-b-26">
 						<span class="label-input100">색상</span> 
-						<form:input path="pr_color" class="input100" placeholder="상품색상 입력(,로 구분하여 입력)"/>
+						<form:input path="pr_color" class="input100" placeholder="상품색상 입력(,로 구분하여 입력)"  value = "${productDTO.pr_color}"/>
 						<span class="focus-input100"></span>
 						<form:errors path="pr_color" style="color:red;" />
 					</div>
 					
 					<div class="wrap-input100 validate-input m-b-26">
 						<span class="label-input100">재고</span>
-						<form:input path="pr_stock" class="input100" placeholder="상품재고 입력"/>
+						<form:input path="pr_stock" class="input100" placeholder="상품재고 입력"  value = "${productDTO.pr_stock}"/>
 						<span class="focus-input100"></span>
 						<form:errors path="pr_stock" style="color:red;" />
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-26">
 						<span class="label-input100">상세설명</span> 
-						<form:input path="pr_detail" class="input100" placeholder="상품 상세설명 입력"/>
+						<form:input path="pr_detail" class="input100" placeholder="상품 상세설명 입력"  value = "${productDTO.pr_detail}"/>
 						<span class="focus-input100"></span>
 						<form:errors path="pr_detail" style="color:red;" />
 					</div>
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">등록</button>
+						<button class="login100-form-btn">수정</button>
 					</div>
 					
 					</form:form>
