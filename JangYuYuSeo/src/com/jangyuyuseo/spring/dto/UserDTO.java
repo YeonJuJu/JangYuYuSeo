@@ -29,6 +29,8 @@ public class UserDTO {
 
 	private String user_phone;
 	
+	private String user_signUpDate;
+	
 	private boolean inputUserID;
 	private boolean userLogin;
 	
