@@ -76,7 +76,8 @@ public class UserController {
 	}
 	
 	@GetMapping("/myPage")
-	public String myPage() {
+	public String myPage(Model model) {
+		model.addAttribute("loginUserDTO", loginUserDTO);
 		return "/user/myPage";
 	}
 	
@@ -117,6 +118,8 @@ public class UserController {
 		}
 		
 		userService.modifyUserInfo(modifyUserDTO);
+		
+		userService.getLoginUser(modifyUserDTO);
 		
 		return "user/modify_success";
 	}

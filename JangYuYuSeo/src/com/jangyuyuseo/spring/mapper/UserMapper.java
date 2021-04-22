@@ -13,7 +13,7 @@ public interface UserMapper {
 	@Select("SELECT USER_NAME FROM USER_TABLE WHERE USER_ID = #{user_id}")
 	public String checkID(String user_id);
 
-	@Select("SELECT USER_IDX, USER_NAME FROM USER_TABLE WHERE USER_ID=#{user_id} AND USER_PASSWORD=#{user_password}")
+	@Select("SELECT USER_IDX, USER_NAME, USER_ADDRESS, TO_CHAR(USER_SIGNUPDATE, 'YYYY-MM-DD') AS USER_SIGNUPDATE FROM USER_TABLE WHERE USER_ID=#{user_id} AND USER_PASSWORD=#{user_password}")
 	public UserDTO getLoginUser(UserDTO loginUserDTO);
 	
 	@Select("SELECT * FROM USER_TABLE WHERE USER_IDX=#{user_idx} AND USER_NAME=#{user_name} AND USER_PASSWORD=#{user_password}")

@@ -38,6 +38,9 @@ public class UserService {
 		if(fromDBUserDTO != null) {
 			loginUserDTO.setUser_idx(fromDBUserDTO.getUser_idx());
 			loginUserDTO.setUser_name(fromDBUserDTO.getUser_name());
+			loginUserDTO.setUser_address(fromDBUserDTO.getUser_address());
+			loginUserDTO.setUser_signUpDate(fromDBUserDTO.getUser_signUpDate());
+			System.out.println("user_signupdate : " + fromDBUserDTO.getUser_signUpDate());
 			loginUserDTO.setUserLogin(true);
 		}
 	}
@@ -52,6 +55,7 @@ public class UserService {
 			modifyUserDTO.setUser_address(modifyUserInfo.getUser_address());
 			modifyUserDTO.setUser_name(modifyUserInfo.getUser_name());
 			modifyUserDTO.setUser_phone(modifyUserInfo.getUser_phone());	
+			modifyUserDTO.setUser_signUpDate(loginUserDTO.getUser_signUpDate());
 		}
 
 	}

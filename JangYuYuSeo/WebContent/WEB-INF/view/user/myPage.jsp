@@ -61,14 +61,14 @@
 									
 									<td>
 										<div class="email">
-											<span style="font-weight:bold; font-size:1em">이름이다 </span> 
-											<span style="font-weight:bold">가입일 : 2021년 04월 21일</span>
+											<span style="font-weight:bold; font-size:1em">${loginUserDTO.user_name } </span> 
+											<span style="font-weight:bold">가입일 : ${loginUserDTO.user_signUpDate }</span>
 										</div>
 									</td>
 									
 									<td></td>
 									
-									<td style="font-weight:bold">서울시 동작구 어쩌구동 </td>
+									<td style="font-weight:bold">${loginUserDTO.user_address } </td>
 									
 									<td>
 										<a href="${root}user/before_modify" style="font-weight:bold; font-size:1em">edit</a>
