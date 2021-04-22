@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -19,6 +18,14 @@ public class ProductDAO {
 	
 	public List<ProductDTO> selectAllProduct(){
 		return productMapper.selectAllProduct();
+	}
+	
+	public List<ProductDTO> selectBestProduct(){
+		return productMapper.selectBestProduct();
+	}
+
+	public List<ProductDTO> selectNewProduct(){
+		return productMapper.selectNewProduct();
 	}
 	
 	public List<ProductDTO> selectCategoryProduct(int category_idx){

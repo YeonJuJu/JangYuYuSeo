@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Select;
 
 import com.jangyuyuseo.spring.dto.CategoryDTO;
-import com.jangyuyuseo.spring.dto.ProductDTO;
 
 public interface CategoryMapper {
 	@Select("SELECT * FROM CATEGORY_TABLE ORDER BY CATEGORY_IDX")

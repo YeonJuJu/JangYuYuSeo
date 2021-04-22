@@ -64,76 +64,70 @@
 					<span class="login100-form-title-1">상품등록</span>
 				</div>
 				<form:form action="${root }product/register" method="post" modelAttribute="productDTO" class="login100-form validate-form" enctype="multipart/form-data">
-					<div class="wrap-input100 validate-input m-b-26"
-						data-validate="Username is required">
+					<div class="wrap-input100 validate-input m-b-26">
 						<span class="label-input100">상품이름</span> 
 						<form:input path="pr_name" class="input100" placeholder="상품이름 입력"/> 
 						<span class="focus-input100"></span>
+						<form:errors path="pr_name" style="color:red;"/>
 					</div>
 					
-					<div class="wrap-input100 validate-input m-b-26"
-						data-validate="Username is required">
+					<div class="wrap-input100 validate-input m-b-26">
 						<span class="label-input100">카테고리</span>
 						<form:select path="pr_category" >
-							<c:forEach var="category" items="${categoryList}">
+							<c:forEach var="category" items="${categoryList}" begin="2">
     							<option value=${category.category_idx}>${category.category_name}</option>
 							</c:forEach>
   						</form:select>
-  				
 					</div>
 					
-					<div class="wrap-input100 validate-input m-b-26"
-						data-validate="Username is required">
+					<div class="wrap-input100 validate-input m-b-26">
 						<span class="label-input100">대표 이미지</span>
 						<input type="file" id="gdsImg" name="file" />
+						<br><br>
+						<form:errors path="pr_image" style="color:red;"/>
 					</div>
 						
 
-					<div class="wrap-input100 validate-input m-b-26"
-						data-validate="Username is required">
+					<div class="wrap-input100 validate-input m-b-26">
 						<span class="label-input100">상품 가격</span>
 						<form:input path="pr_price" class="input100" placeholder="상품가격 입력"/>
-							<span class="focus-input100"></span>
+						<span class="focus-input100"></span>
+						<form:errors path="pr_price" style="color:red;"/>
 					</div>
 					
-					<div class="wrap-input100 validate-input m-b-26"
-						data-validate="Username is required">
+					<div class="wrap-input100 validate-input m-b-26">
 						<span class="label-input100">상품설명</span> 
-						<form:input path="pr_description" class="input100" 
-							placeholder="상품설명 입력"/>
-							<span class="focus-input100"></span>
+						<form:input path="pr_description" class="input100" placeholder="상품설명 입력"/>
+						<span class="focus-input100"></span>
+						<form:errors path="pr_description" style="color:red;"/>
 					</div>
 					
-					<div class="wrap-input100 validate-input m-b-26"
-						data-validate="Username is required">
+					<div class="wrap-input100 validate-input m-b-26">
 						<span class="label-input100">사이즈</span>
-						<form:input path="pr_size" class="input100" 
-							placeholder="상품사이즈 입력(,로 구분하여 입력)"/>
-							<span class="focus-input100"></span>
+						<form:input path="pr_size" class="input100" placeholder="상품사이즈 입력(,로 구분하여 입력)"/>
+						<span class="focus-input100"></span>
+						<form:errors path="pr_size" style="color:red;"/>
 					</div>
 					
-					<div class="wrap-input100 validate-input m-b-26"
-						data-validate="Username is required">
+					<div class="wrap-input100 validate-input m-b-26">
 						<span class="label-input100">색상</span> 
-						<form:input path="pr_color" class="input100" 
-							placeholder="상품색상 입력(,로 구분하여 입력)"/>
-							<span class="focus-input100"></span>
+						<form:input path="pr_color" class="input100" placeholder="상품색상 입력(,로 구분하여 입력)"/>
+						<span class="focus-input100"></span>
+						<form:errors path="pr_color" style="color:red;"/>
 					</div>
 					
-					<div class="wrap-input100 validate-input m-b-26"
-						data-validate="Username is required">
+					<div class="wrap-input100 validate-input m-b-26">
 						<span class="label-input100">재고</span>
-						<form:input path="pr_stock" class="input100" 
-							placeholder="상품재고 입력"/>
-							<span class="focus-input100"></span>
+						<form:input path="pr_stock" class="input100" placeholder="상품재고 입력"/>
+						<span class="focus-input100"></span>
+						<form:errors path="pr_stock" style="color:red;"/>
 					</div>
 
-					<div class="wrap-input100 validate-input m-b-26"
-						data-validate="Username is required">
+					<div class="wrap-input100 validate-input m-b-26">
 						<span class="label-input100">상세설명</span> 
-						<form:input path="pr_detail" class="input100" 
-							placeholder="상품 상세설명 입력"/>
-							<span class="focus-input100"></span>
+						<form:input path="pr_detail" class="input100" placeholder="상품 상세설명 입력"/>
+						<span class="focus-input100"></span>
+						<form:errors path="pr_detail" style="color:red;"/>
 					</div>
 
 					<div class="container-login100-form-btn">
