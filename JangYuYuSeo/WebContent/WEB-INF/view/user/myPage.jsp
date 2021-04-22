@@ -62,7 +62,7 @@
 									<td>
 										<div class="email">
 											<span style="font-weight:bold; font-size:1em">${loginUserDTO.user_name } </span> 
-											<span style="font-weight:bold">가입일 : ${loginUserDTO.user_signUpDate }</span>
+											<span style="font-weight:bold">가입일 : ${loginUserDTO.user_signupdate }</span>
 										</div>
 									</td>
 									

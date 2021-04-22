@@ -29,7 +29,7 @@ public class UserDTO {
 
 	private String user_phone;
 	
-	private String user_signUpDate;
+	private String user_signupdate;
 	
 	private boolean inputUserID;
 	private boolean userLogin;
