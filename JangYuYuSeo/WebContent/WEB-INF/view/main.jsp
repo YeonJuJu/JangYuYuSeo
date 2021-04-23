@@ -28,7 +28,7 @@
 
 	<!-- 메인 게시판 부분 -->
 	<div class="album py-5 bg-light" style="margin-top: 130px">
-		<div class="container">
+		<div class="container" >
 			<h1>Best!</h1>
 			<div class="row"></div>
 		</div>
@@ -45,8 +45,7 @@
 							<h3>${product.pr_name}</h3>
 							<p class="card-text">${product.pr_description}</p>
 							<p class="card-text">
-								<fmt:formatNumber value="${product.pr_price}" pattern="#,###,###" />
-								₩
+								<fmt:formatNumber value="${product.pr_price}" pattern="#,###,###" /> ₩
 							</p>
 							<div class="d-flex justify-content-between align-items-center">
 								<small class="text-muted">${product.pr_size}&nbsp;&nbsp;${product.pr_color}</small>
@@ -76,8 +75,7 @@
 							<h3>${product.pr_name}</h3>
 							<p class="card-text">${product.pr_description}</p>
 							<p class="card-text">
-								<fmt:formatNumber value="${product.pr_price}" pattern="#,###,###" />
-								₩
+								<fmt:formatNumber value="${product.pr_price}" pattern="#,###,###" /> ₩
 							</p>
 							<div class="d-flex justify-content-between align-items-center">
 								<small class="text-muted">${product.pr_size}&nbsp;&nbsp;${product.pr_color}</small>

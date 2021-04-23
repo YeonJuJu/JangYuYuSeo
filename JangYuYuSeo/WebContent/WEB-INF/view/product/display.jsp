@@ -74,8 +74,9 @@
 
 								<br></br>
 								<div>
-									<button class="login100-form-btn">장바구니</button>
-									<button class="login100-form-btn">주문하기</button>
+									<button class="login100-form-btn"  onclick = "location.href = '${root}order/cart'"" >장바구니</button>
+									<button class="login100-form-btn"  onclick = "location.href = '${root}order/orderform'" />주문하기</button>
+									
 								</div>
 							</div>
 						</div>
