@@ -18,13 +18,16 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="${root}css02/style.css">
 	<script type="text/javascript">
+	
 		function change_qty2(t){ 
 			//var min_qty = '수량버튼'*1; 
 			var min_qty = 1; 
 			var this_qty = $("#quentity").val()*1; 
 			var max_qty = '100'; // 현재 재고 
 			
-			System.out.println(this_qty);
+			if( isNaN(this_qty) ){
+				this_qty=0
+			} 
 			
 			if(t=="m"){ 
 				this_qty -= 1; 
@@ -39,9 +42,10 @@
 					return; 
 				} 
 			} 
-			var show_total_amount = basic_amount * this_qty; 
+			/* var show_total_amount = basic_amount * this_qty;  */
 			/* $("#ct_qty_txt").text(this_qty); */ 
 			$("#quentity").val(this_qty); 
+
 			/* $("#it_pay").val(show_total_amount); 
 			$("#total_amount").html(show_total_amount.format());  */
 		}
@@ -70,49 +74,53 @@
 								<tr>
 									<th>&nbsp;</th>
 									<th>&nbsp;</th>
-									<th>Product</th>
-									<th>Price</th>
-									<th>Quantity</th>
-									<th>total</th>
+									<th style="font-weight:bold; font-size:1em">Product</th>
+									<th style="font-weight:bold; font-size:1em">Price</th>
+									<th style="font-weight:bold; font-size:1em">Quantity</th>
+									<th style="font-weight:bold; font-size:1em">total</th>
 									<th>&nbsp;</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr class="alert" role="alert">
 									<td><label class="checkbox-wrap checkbox-primary">
-											<input type="checkbox" checked> <span
-											class="checkmark"></span>
+											<input type="checkbox" checked> 
+											<span class="checkmark"></span>
 									</label></td>
+									
 									<td>
-										<div class="img"
-											style="background-image: url(${root}images02/product-1.png);"></div>
+										<div class="img" style="background-image: url(${root}images02/product-1.png);"></div>
 									</td>
+									
 									<td>
 										<div class="email">
-											<span>Sneakers Shoes 2020 For Men </span> <span>Fugiat
-												voluptates quasi nemo, ipsa perferendis</span>
+											<span style="font-weight:bold; font-size:1em">Sneakers Shoes 2020 </span> 
+											<span style="font-weight:bold;">Fugiat voluptates quasi nemo, ipsa perferendis</span>
 										</div>
 									</td>
+									
 									<td>$44.99</td>
+									
 									<td class="quantity">
 										<div class="input-group">
 												<div class="minus">
 													<a href="javascript:change_qty2('m')">
-														<img src="${root}/images02/plus.png" alt="-">
+														<img src="${root}/images02/minus.png" alt="-">
 													</a>
 												</div>
 					
-												<input type="text" name="quantity" id="ct_qty" value="1" readonly="readonly"> 
+												<input type="text" name="quantity" id="quentity" value="1" readonly="readonly"> 
 												
 												<div class="plus">
 													<a href="javascript:change_qty2('p')">
-														<img src="/images02/minus.png" alt="+">
+														<img src="${root}/images02/plus.png" alt="+">
 													</a>
 												</div>
-											
 										</div>
 									</td>
+									
 									<td>$89.98</td>
+									
 									<td>
 										<button type="button" class="close" data-dismiss="alert"
 											aria-label="Close">
