@@ -29,6 +29,7 @@ import com.jangyuyuseo.spring.mapper.ProductMapper;
 import com.jangyuyuseo.spring.mapper.UserMapper;
 import com.jangyuyuseo.spring.dto.UserDTO;
 import com.jangyuyuseo.spring.interceptor.CategoryInterceptor;
+import com.jangyuyuseo.spring.interceptor.CheckAdminInterceptor;
 import com.jangyuyuseo.spring.service.CategoryService;
 // Spring MVC 프로젝트에 관련된 설정을 하는 클래스
 
@@ -139,10 +140,13 @@ public class ServletAppContext implements WebMvcConfigurer {
 	    WebMvcConfigurer.super.addInterceptors(registry);
 	  	
 	  	CategoryInterceptor categoryInterceptor = new CategoryInterceptor(categoryService, loginUserDTO);
+	  	CheckAdminInterceptor checkAdminInterceptor = new CheckAdminInterceptor(loginUserDTO);
 	  	
 	  	InterceptorRegistration reg1 = registry.addInterceptor(categoryInterceptor);
+	  	InterceptorRegistration reg2 = registry.addInterceptor(checkAdminInterceptor);
 	  	
 	  	reg1.addPathPatterns("/**");
+	  	reg2.addPathPatterns("/product/manage", "/product/modify", "/product/register");
 	  	
 	}
 	

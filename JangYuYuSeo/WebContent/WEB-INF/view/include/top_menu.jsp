@@ -18,12 +18,18 @@
     <ul class="navbar-nav ml-auto">
       <c:choose>
       	<c:when test="${loginUserDTO.isUserLogin()==true }">
-      		<li class="nav-item">
-        		<a href="${root }user/logout" class="nav-link">Logout<span class="sr-only">(current)</span></a>
-      		</li>
-      		<li class="nav-item">
-        		<a href="${root }user/myPage" class="nav-link">MyPage</a>
-      		</li>
+      			<c:if test="${loginUserDTO.getUser_idx()=='0' }">
+      				<li class="nav-item">
+        				<a href="${root }product/manage" class="nav-link">Manage<span class="sr-only">(current)</span></a>
+      				</li>
+      			</c:if>
+   
+      			<li class="nav-item">
+        			<a href="${root }user/logout" class="nav-link">Logout<span class="sr-only">(current)</span></a>
+	      		</li>
+	      		<li class="nav-item">
+	        		<a href="${root }user/myPage" class="nav-link">MyPage</a>
+	      		</li>
       	</c:when>
       	<c:otherwise>
       		<li class="nav-item">

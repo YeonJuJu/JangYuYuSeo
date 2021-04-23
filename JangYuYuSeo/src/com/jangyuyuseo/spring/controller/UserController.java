@@ -124,6 +124,11 @@ public class UserController {
 		return "user/modify_success";
 	}
 	
+	@GetMapping("/not_admin")
+	public String notAdmain() {
+		return "user/not_admin";
+	}
+	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		UserValidator validator1 = new UserValidator();
