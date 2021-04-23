@@ -9,17 +9,12 @@ public class UploadFileUtils {
 
 	public static String fileUpload(String uploadPath, String fileName, byte[] fileData) throws Exception {
 
-		UUID uid = UUID.randomUUID();
-
-		String newFileName = uid + "_" + fileName;
-		String imgPath = uploadPath;
-
-		File target = new File(imgPath, newFileName);
+		File target = new File(uploadPath, fileName);
 		FileCopyUtils.copy(fileData, target);
 
-		File image = new File(imgPath + File.separator + newFileName);
+		File image = new File(uploadPath + File.separator + fileName);
 
-		return newFileName;
+		return fileName;
 	}
 
 	private static void makeDir(String uploadPath, String... paths) {

@@ -3,6 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="root" value="${pageContext.request.contextPath}/"/>    
 <script type="text/javascript">
-	alert('상품등록 완료되었습니다.');
-	location.href='${root}}/product/manage';
+	alert('상품수정이 완료되었습니다.');
+	location.href='${root}/product/manage';
 </script>

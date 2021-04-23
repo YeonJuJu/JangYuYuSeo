@@ -30,6 +30,17 @@ public class ProductService {
 		return productDAO.selectCategoryProduct(category_idx);
 	}
 	
+	public ProductDTO selectProductById(int pr_id) {
+		return productDAO.selectProductById(pr_id);
+	}
+
+	public void deleteProduct(int pr_id) {
+		productDAO.deleteProduct(pr_id);
+	}
+
+	public void updateProduct(ProductDTO productDTO,int pr_id) {
+		productDAO.updateProduct(productDTO,pr_id);
+	}
 	
 	public void addProduct(ProductDTO productDTO) {
 		productDAO.addProduct(productDTO);
