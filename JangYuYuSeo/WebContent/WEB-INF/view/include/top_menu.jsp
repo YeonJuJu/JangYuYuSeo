@@ -41,7 +41,7 @@
       	</c:otherwise>
       </c:choose>
       <li class="nav-item">
-        <a href="${root }main" class="nav-link">Shopping Basket</a>
+        <a href="${root }order/cart" class="nav-link">Cart</a>
       </li>
     </ul>
   </div>
