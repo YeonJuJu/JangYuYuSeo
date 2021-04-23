@@ -12,4 +12,9 @@ public class OrderController {
 	public String cart() {
 		return "order/cart";
 	}
+	
+	@GetMapping("/orderform")
+	public String orderForm() {
+		return "order/order_form";
+	}
 }
