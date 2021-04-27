@@ -24,6 +24,8 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.jangyuyuseo.spring.mapper.CartMapper;
+import com.jangyuyuseo.spring.mapper.CartProductMapper;
 import com.jangyuyuseo.spring.mapper.CategoryMapper;
 import com.jangyuyuseo.spring.mapper.ProductMapper;
 import com.jangyuyuseo.spring.mapper.UserMapper;
@@ -128,6 +130,24 @@ public class ServletAppContext implements WebMvcConfigurer {
 	public MapperFactoryBean<CategoryMapper> getCategoryMapper(SqlSessionFactory factory) throws Exception{
 		MapperFactoryBean<CategoryMapper> factoryBean 
 		= new MapperFactoryBean<CategoryMapper>(CategoryMapper.class);
+		factoryBean.setSqlSessionFactory(factory);
+		return factoryBean;
+	}
+	
+	//CartMapper 등록
+	@Bean 
+	public MapperFactoryBean<CartMapper> getCartMapper(SqlSessionFactory factory) throws Exception{
+		MapperFactoryBean<CartMapper> factoryBean 
+		= new MapperFactoryBean<CartMapper>(CartMapper.class);
+		factoryBean.setSqlSessionFactory(factory);
+		return factoryBean;
+	}
+	
+	//CartProductMapper 등록
+	@Bean
+	public MapperFactoryBean<CartProductMapper> getCartProductMapper(SqlSessionFactory factory) throws Exception{
+		MapperFactoryBean<CartProductMapper> factoryBean 
+		= new MapperFactoryBean<CartProductMapper>(CartProductMapper.class);
 		factoryBean.setSqlSessionFactory(factory);
 		return factoryBean;
 	}

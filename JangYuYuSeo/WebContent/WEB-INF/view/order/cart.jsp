@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!-- 절대경로 설정 -->
 <c:url var="root" value="/" />
@@ -18,34 +19,34 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="${root}css02/style.css">
 	<script type="text/javascript">
-		function change_qty2(t){ 
-			//var min_qty = '수량버튼'*1; 
-			var min_qty = 1; 
-			var this_qty = $("#quentity").val()*1; 
-			var max_qty = '100'; // 현재 재고 
-			
-			System.out.println(this_qty);
-			
-			if(t=="m"){ 
-				this_qty -= 1; 
-				if(this_qty<min_qty){ 
-					alert("수량은 1개 이상 입력해 주십시오."); 
-					return; 
-				} 
-			} else if(t=="p"){ 
-				this_qty += 1; 
-				if(this_qty>max_qty){ 
+
+			function change_qty2(type,id){ 
+				// element	
+			  const result = document.getElementById("count"+id.toString());
+			  const total = document.getElementById("total"+id.toString());
+			  const price = document.getElementById("price"+id.toString());
+			  // 현재 화면에 표시된 값
+			  let number = result.innerText;
+			  
+			  // 더하기/빼기
+			  if(type === 'plus') {
+			    number = parseInt(number) + 1;
+			    if(number>100){ 
 					alert("최대 구매 수량은 100개 입니다."); 
 					return; 
 				} 
-			} 
-			var show_total_amount = basic_amount * this_qty; 
-			/* $("#ct_qty_txt").text(this_qty); */ 
-			$("#quentity").val(this_qty); 
-			/* $("#it_pay").val(show_total_amount); 
-			$("#total_amount").html(show_total_amount.format());  */
+			    
+			  }else if(type === 'minus')  {
+			    number = parseInt(number) - 1;
+			    if(number<1){ 
+					alert("수량은 1개 이상 입력해 주십시오."); 
+					return; 
+				} 
+			  }
+			  // 결과 출력
+			  result.innerText = number;
+			  total.innerText = (number*price.innerText).toLocaleString( 'ko-KR', { style: 'currency', currency: 'KRW' } );
 		}
-
 	
 	</script>
 </head>
@@ -78,6 +79,8 @@
 								</tr>
 							</thead>
 							<tbody>
+							
+							<c:forEach var="product" items="${cartProductList}">
 								<tr class="alert" role="alert">
 									<td><label class="checkbox-wrap checkbox-primary">
 											<input type="checkbox" checked> <span
@@ -85,34 +88,27 @@
 									</label></td>
 									<td>
 										<div class="img"
-											style="background-image: url(${root}images02/product-1.png);"></div>
+											style="background-image: url(${pageContext.request.contextPath}/${product.pr_image});"></div>
 									</td>
 									<td>
-										<div class="email">
-											<span>Sneakers Shoes 2020 For Men </span> <span>Fugiat
-												voluptates quasi nemo, ipsa perferendis</span>
+									<a href="${root}product/display?product_id=${product.pr_id}">
+										<div class="product">
+											<div>${product.pr_name }</div>
+ 											<medium class="text-muted">${product.pr_size}&nbsp;&nbsp;${product.pr_color}</medium>
 										</div>
+										
+									</a>
 									</td>
-									<td>$44.99</td>
+									<td>
+										₩<fmt:formatNumber value="${product.pr_price}" pattern="#,###,###" />
+										<div id='price${product.cart_pr_id}' style="display:none">${product.pr_price}</div>
+									</td>
 									<td class="quantity">
-										<div class="input-group">
-												<div class="minus">
-													<a href="javascript:change_qty2('m')">
-														<img src="${root}/images02/plus.png" alt="-">
-													</a>
-												</div>
-					
-												<input type="text" name="quantity" id="ct_qty" value="1" readonly="readonly"> 
-												
-												<div class="plus">
-													<a href="javascript:change_qty2('p')">
-														<img src="/images02/minus.png" alt="+">
-													</a>
-												</div>
-											
-										</div>
+										<input value="-" type="button" onclick='change_qty2("minus","${product.cart_pr_id}")'>
+										<div id='count${product.cart_pr_id}'>${product.pr_amount}</div>
+										<input value="+" type="button" onClick ='change_qty2("plus","${product.cart_pr_id}")'>
 									</td>
-									<td>$89.98</td>
+									<td id='total${product.cart_pr_id}'></td> <!--total price -->
 									<td>
 										<button type="button" class="close" data-dismiss="alert"
 											aria-label="Close">
@@ -121,135 +117,21 @@
 									</td>
 								</tr>
 
-								<tr class="alert" role="alert">
-									<td><label class="checkbox-wrap checkbox-primary">
-											<input type="checkbox"> <span class="checkmark"></span>
-									</label></td>
-									<td>
-										<div class="img"
-											style="background-image: url(${root}images02/product-2.png);"></div>
-									</td>
-									<td>
-										<div class="email">
-											<span>Sneakers Shoes 2020 For Men </span> <span>Fugiat
-												voluptates quasi nemo, ipsa perferendis</span>
-										</div>
-									</td>
-									<td>$30.99</td>
-									<td class="quantity">
-										<div class="input-group">
-											<input type="text" name="quantity"
-												class="quantity form-control input-number" value="1" min="1"
-												max="100">
-										</div>
-									</td>
-									<td>$30.99</td>
-									<td>
-										<button type="button" class="close" data-dismiss="alert"
-											aria-label="Close">
-											<span aria-hidden="true"><i class="fa fa-close"></i></span>
-										</button>
-								</tr>
 
-								<tr class="alert" role="alert">
-									<td><label class="checkbox-wrap checkbox-primary">
-											<input type="checkbox"> <span class="checkmark"></span>
-									</label></td>
-									<td>
-										<div class="img"
-											style="background-image: url(${root}images02/product-3.png);"></div>
-									</td>
-									<td>
-										<div class="email">
-											<span>Sneakers Shoes 2020 For Men </span> <span>Fugiat
-												voluptates quasi nemo, ipsa perferendis</span>
-										</div>
-									</td>
-									<td>$35.50</td>
-									<td class="quantity">
-										<div class="input-group">
-											<input type="text" name="quantity"
-												class="quantity form-control input-number" value="1" min="1"
-												max="100">
-										</div>
-									</td>
-									<td>$35.50</td>
-									<td>
-										<button type="button" class="close" data-dismiss="alert"
-											aria-label="Close">
-											<span aria-hidden="true"><i class="fa fa-close"></i></span>
-										</button>
-									</td>
-								</tr>
+							</c:forEach>
 
-								<tr class="alert" role="alert">
-									<td><label class="checkbox-wrap checkbox-primary">
-											<input type="checkbox"> <span class="checkmark"></span>
-									</label></td>
-									<td>
-										<div class="img"
-											style="background-image: url(${root}images02/product-4.png);"></div>
-									</td>
-									<td>
-										<div class="email">
-											<span>Sneakers Shoes 2020 For Men </span> <span>Fugiat
-												voluptates quasi nemo, ipsa perferendis</span>
-										</div>
-									</td>
-									<td>$76.99</td>
-									<td class="quantity">
-										<div class="input-group">
-											<input type="text" name="quantity"
-												class="quantity form-control input-number" value="1" min="1"
-												max="100">
-										</div>
-									</td>
-									<td>$76.99</td>
-									<td>
-										<button type="button" class="close" data-dismiss="alert"
-											aria-label="Close">
-											<span aria-hidden="true"><i class="fa fa-close"></i></span>
-										</button>
-									</td>
-								</tr>
 
-								<tr class="alert" role="alert">
-									<td class="border-bottom-0"><label
-										class="checkbox-wrap checkbox-primary"> <input
-											type="checkbox"> <span class="checkmark"></span>
-									</label></td>
-									<td class="border-bottom-0">
-										<div class="img"
-											style="background-image: url(${root}images02/product-1.png);"></div>
-									</td>
-									<td class="border-bottom-0">
-										<div class="email">
-											<span>Sneakers Shoes 2020 For Men </span> <span>Fugiat
-												voluptates quasi nemo, ipsa perferendis</span>
-										</div>
-									</td>
-									<td class="border-bottom-0">$40.00</td>
-									<td class="quantity border-bottom-0">
-										<div class="input-group">
-											<input type="text" name="quantity"
-												class="quantity form-control input-number" value="1" min="1"
-												max="100">
-										</div>
-									</td>
-									<td class="border-bottom-0">$40.00</td>
-									<td class="border-bottom-0">
-										<button type="button" class="close" data-dismiss="alert"
-											aria-label="Close">
-											<span aria-hidden="true"><i class="fa fa-close"></i></span>
-										</button>
-									</td>
-								</tr>
+
+
+								
 							</tbody>
 						</table>
 					</div>
 					<br>
 					<div>
+					<a href="${root}order/orderform_cart?cart_id=${cartId}">
 						<button style="background:#99b19c; color:#fff; border:none; padding:0 2em; cursor:pointer; float:right;">Order</button>
+					</a>
 					</div>
 				</div>
 			</div>

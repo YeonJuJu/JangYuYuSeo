@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!-- 절대경로 설정 -->
 <c:url var="root" value="/" />
 
@@ -69,7 +71,6 @@
 							<thead class="thead-primary">
 								<tr>
 									<th>&nbsp;</th>
-									<th>&nbsp;</th>
 									<th>Product</th>
 									<th>Price</th>
 									<th>Quantity</th>
@@ -79,29 +80,28 @@
 							</thead>
 							<tbody>
 
+								
+							<c:forEach var="product" items="${cartProductList}">
 								<tr class="alert" role="alert">
-									<td><label class="checkbox-wrap checkbox-primary">
-											<input type="checkbox"> <span class="checkmark"></span>
-									</label></td>
+									
 									<td>
 										<div class="img"
-											style="background-image: url(${root}images02/product-3.png);"></div>
+											style="background-image: url(${pageContext.request.contextPath}/${product.pr_image});"></div>
 									</td>
 									<td>
-										<div class="email">
-											<span>Sneakers Shoes 2020 For Men </span> <span>Fugiat
-												voluptates quasi nemo, ipsa perferendis</span>
+										<div class="product">
+											<div>${product.pr_name }</div>
+ 											<medium class="text-muted">${product.pr_size}&nbsp;&nbsp;${product.pr_color}</medium>
 										</div>
 									</td>
-									<td>$35.50</td>
+									<td>
+										₩<fmt:formatNumber value="${product.pr_price}" pattern="#,###,###" />
+										<div id='price' style="display:none">${product.pr_price}</div>
+									</td>
 									<td class="quantity">
-										<div class="input-group">
-											<input type="text" name="quantity"
-												class="quantity form-control input-number" value="1" min="1"
-												max="100">
-										</div>
+										<div id='count'>${product.pr_amount}</div>
 									</td>
-									<td>$35.50</td>
+									<td id='total'>total</td> <!--total price -->
 									<td>
 										<button type="button" class="close" data-dismiss="alert"
 											aria-label="Close">
@@ -110,37 +110,8 @@
 									</td>
 								</tr>
 
-								<tr class="alert" role="alert">
-									<td class="border-bottom-0"><label
-										class="checkbox-wrap checkbox-primary"> <input
-											type="checkbox"> <span class="checkmark"></span>
-									</label></td>
-									<td class="border-bottom-0">
-										<div class="img"
-											style="background-image: url(${root}images02/product-1.png);"></div>
-									</td>
-									<td class="border-bottom-0">
-										<div class="email">
-											<span>Sneakers Shoes 2020 For Men </span> <span>Fugiat
-												voluptates quasi nemo, ipsa perferendis</span>
-										</div>
-									</td>
-									<td class="border-bottom-0">$40.00</td>
-									<td class="quantity border-bottom-0">
-										<div class="input-group">
-											<input type="text" name="quantity"
-												class="quantity form-control input-number" value="1" min="1"
-												max="100">
-										</div>
-									</td>
-									<td class="border-bottom-0">$40.00</td>
-									<td class="border-bottom-0">
-										<button type="button" class="close" data-dismiss="alert"
-											aria-label="Close">
-											<span aria-hidden="true"><i class="fa fa-close"></i></span>
-										</button>
-									</td>
-								</tr>
+
+							</c:forEach>
 							</tbody>
 						</table>
 					</div>
