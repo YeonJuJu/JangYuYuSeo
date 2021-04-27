@@ -75,7 +75,6 @@
 									<th>Price</th>
 									<th>Quantity</th>
 									<th>total</th>
-									<th>&nbsp;</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -101,13 +100,9 @@
 									<td class="quantity">
 										<div id='count'>${product.pr_amount}</div>
 									</td>
-									<td id='total'>total</td> <!--total price -->
-									<td>
-										<button type="button" class="close" data-dismiss="alert"
-											aria-label="Close">
-											<span aria-hidden="true"><i class="fa fa-close"></i></span>
-										</button>
-									</td>
+									<td id='total'>
+									₩<fmt:formatNumber value="${product.total_price}" pattern="#,###,###" />
+									</td> 
 								</tr>
 
 

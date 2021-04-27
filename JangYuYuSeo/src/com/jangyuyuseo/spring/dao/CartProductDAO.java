@@ -15,7 +15,6 @@ public class CartProductDAO {
 	private CartProductMapper cartProductMapper;
 	
 	public void addCartProduct(CartProductDTO cartProductDTO) {
-		cartProductDTO.setPr_amount(1);
 		cartProductMapper.addCartProduct(cartProductDTO);
 	}
 	public void updateCartProductAmount(int amount,int cart_pr_id) {
@@ -27,7 +26,7 @@ public class CartProductDAO {
 	public List<CartProductDTO> findProductListByCartId(int cart_id) {
 		return cartProductMapper.findProductListByCartId(cart_id);
 	}
-	public CartProductDTO findProductByCartId(int cart_pr_id) {
-		return cartProductMapper.findProductByCartId(cart_pr_id);
+	public CartProductDTO findProductByCartPrId(int cart_pr_id) {
+		return cartProductMapper.findProductByCartPrId(cart_pr_id);
 	}
 }

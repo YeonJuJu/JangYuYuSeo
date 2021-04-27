@@ -23,6 +23,8 @@ public class CartProductService {
 		//없으면
 		if(preCartProductDTO == null) {
 			//새로추가 
+			cartProductDTO.setPr_amount(1);
+			cartProductDTO.setTotal_price(cartProductDTO.getPr_price());
 			cartProductDAO.addCartProduct(cartProductDTO);
 		}
 		//있으면 수량만 ++
@@ -35,8 +37,8 @@ public class CartProductService {
 	public List<CartProductDTO> findProductListByCartId(int cart_id) {
 		return cartProductDAO.findProductListByCartId(cart_id);
 	}
-	public CartProductDTO findProductByCartId(int cart_pr_id) {
-		return cartProductDAO.findProductByCartId(cart_pr_id);
+	public CartProductDTO findProductByCartPrId(int cart_pr_id) {
+		return cartProductDAO.findProductByCartPrId(cart_pr_id);
 	}
 	
 }

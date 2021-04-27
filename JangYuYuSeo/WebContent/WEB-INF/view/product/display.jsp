@@ -77,7 +77,7 @@
 								<form action="${root}cart/insert?product_id=${productDTO.pr_id}"  method="post">
     								<input type="submit" name="cart" value="장바구니" />
 								</form>
-								<a href="${root}order/orderform?product_id=${productDTO.pr_id}">
+								<a href="${root}cart/orderform?product_id=${productDTO.pr_id}">
     								주문하기 
 								</a>
 								</div>
@@ -100,3 +100,4 @@
 </body>
 
 </html>
+
