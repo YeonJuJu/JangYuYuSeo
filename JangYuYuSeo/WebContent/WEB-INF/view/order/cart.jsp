@@ -33,6 +33,7 @@
 			    number = parseInt(number) + 1;
 			    if(number>100){ 
 					alert("최대 구매 수량은 100개 입니다."); 
+            
 					return; 
 				} 
 			    
@@ -42,10 +43,18 @@
 					alert("수량은 1개 이상 입력해 주십시오."); 
 					return; 
 				} 
+
 			  }
 			  // 결과 출력
 			  result.innerText = number;
 			  total.innerText = (number*price.innerText).toLocaleString( 'ko-KR', { style: 'currency', currency: 'KRW' } );
+			} 
+			/* var show_total_amount = basic_amount * this_qty;  */
+			/* $("#ct_qty_txt").text(this_qty); */ 
+			$("#quentity").val(this_qty); 
+
+			/* $("#it_pay").val(show_total_amount); 
+			$("#total_amount").html(show_total_amount.format());  */
 		}
 	
 	</script>
@@ -71,10 +80,13 @@
 								<tr>
 									<th>&nbsp;</th>
 									<th>&nbsp;</th>
-									<th>Product</th>
-									<th>Price</th>
-									<th>Quantity</th>
-									<th>total</th>
+
+									<th style="font-weight:bold; font-size:1em">Product</th>
+									<th style="font-weight:bold; font-size:1em">Price</th>
+									<th style="font-weight:bold; font-size:1em">Quantity</th>
+									<th style="font-weight:bold; font-size:1em">total</th>
+									<th>&nbsp;</th>
+                  
 								</tr>
 							</thead>
 							<tbody>
@@ -82,14 +94,17 @@
 							<c:forEach var="product" items="${cartProductList}">
 								<tr class="alert" role="alert">
 									<td><label class="checkbox-wrap checkbox-primary">
-											<input type="checkbox" checked> <span
-											class="checkmark"></span>
+											<input type="checkbox" checked> 
+											<span class="checkmark"></span>
 									</label></td>
-									<td>
+									
 										<div class="img"
 											style="background-image: url(${pageContext.request.contextPath}/${product.pr_image});"></div>
+
 									</td>
+									
 									<td>
+
 									<a href="${root}product/display?product_id=${product.pr_id}">
 										<div class="product">
 											<div>${product.pr_name }</div>
@@ -97,7 +112,9 @@
 										</div>
 										
 									</a>
+              
 									</td>
+                
 									<td>
 										₩<fmt:formatNumber value="${product.pr_price}" pattern="#,###,###" />
 										<div id='price${product.cart_pr_id}' style="display:none">${product.pr_price}</div>
@@ -117,9 +134,6 @@
 							</c:forEach>
 
 
-
-
-								
 							</tbody>
 						</table>
 					</div>
