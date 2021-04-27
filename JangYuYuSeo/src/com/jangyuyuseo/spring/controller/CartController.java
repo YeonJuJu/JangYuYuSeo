@@ -93,15 +93,21 @@ public class CartController {
 	  }
 	
 	@GetMapping("/orderform")
-	public String orderForm(@RequestParam("product_id") int pr_id, Model model) {
+	public String orderForm(@RequestParam(value = "product_id", required=false , defaultValue = "-1" ) int pr_id, Model model) {
 		//장바구니 넣는거 어떻게 할 지 몰라서 그냥 .. 복붙해옴 ㅎㅎ 함수로 만들어서 쓰면 되나 ..?
 		if(loginUserDTO.isUserLogin() == true) {
-			//색이랑 사이즈 display에서 가져와야 됨 ㅠㅠ잘 안돼서 임의의 값 넣어놓음 
-			int cartPrId = cartInsert(pr_id,"black","free");
-			
 			List<CartProductDTO> cartProductList = new ArrayList<CartProductDTO>();
-			CartProductDTO orderProductDTO = cartProductService.findProductByCartPrId(cartPrId);
-			cartProductList.add(orderProductDTO);
+			if(pr_id == -1) {
+				int userIdx = loginUserDTO.getUser_idx();
+				int cartId = cartService.findCartDTOByUserId(userIdx).getCart_id();
+				cartProductList = cartProductService.findProductListByCartId(cartId);
+			}
+			else {
+				//색이랑 사이즈 display에서 가져와야 됨 ㅠㅠ잘 안돼서 임의의 값 넣어놓음 
+				int cartPrId = cartInsert(pr_id,"black","free");
+				CartProductDTO orderProductDTO = cartProductService.findProductByCartPrId(cartPrId);
+				cartProductList.add(orderProductDTO);
+			}
 			model.addAttribute("cartProductList",cartProductList);
 		  	return "order/order_form";
 		}else {
@@ -109,20 +115,6 @@ public class CartController {
 		}
 	}
 	
-	@GetMapping("/orderform_cart")
-	public String orderFormCart(@RequestParam("cart_id") int cart_id,Model model){
-		List<CartProductDTO> cartProductList = null;
-		if(loginUserDTO.isUserLogin() == true) {
-			int userIdx = loginUserDTO.getUser_idx();
-			int cartId = cartService.findCartDTOByUserId(userIdx).getCart_id();
-			cartProductList = cartProductService.findProductListByCartId(cartId);
-			model.addAttribute("cartProductList",cartProductList);
-			return "order/order_form";
-		}
-		else {
-			return "user/login";
-		}
-	}
 	@PostMapping("/plus_amount")
 	 public String cartPlusProc (@RequestParam("cart_product_id") int cart_pr_id) {
 		int amount = cartProductService.findProductByCartPrId(cart_pr_id).getPr_amount() + 1;

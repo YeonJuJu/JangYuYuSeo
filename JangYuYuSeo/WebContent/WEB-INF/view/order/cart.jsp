@@ -125,7 +125,7 @@
 					</div>
 					<br>
 					<div>
-					<a href="${root}cart/orderform_cart?cart_id=${cartId}">
+					<a href="${root}cart/orderform">
 						<button style="background:#99b19c; color:#fff; border:none; padding:0 2em; cursor:pointer; float:right;">Order</button>
 					</a>
 					</div>
