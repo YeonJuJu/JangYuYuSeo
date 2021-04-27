@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!-- 절대경로 설정 -->
 <c:url var="root" value="/" />
 
@@ -56,27 +58,28 @@
 										pattern="#,###,###" />
 									₩
 								</p>
-								<div class="text-muted">
-									Color&nbsp; <select name="color">
+								<div class="text-muted"> Color&nbsp; 
+									<select path="pr_color">
 										<c:forEach var="color" items="${colorList}">
 											<option value=${color}>${color}</option>
 										</c:forEach>
 									</select>
 								</div>
-
-								<div class="text-muted">
-									Size&nbsp; <select name="size">
+								<div class="text-muted"> Size&nbsp;
+									<select path="pr_size">
 										<c:forEach var="size" items="${sizeList}">
 											<option value=${size}>${size}</option>
 										</c:forEach>
 									</select>
 								</div>
-
 								<br></br>
 								<div>
-									<button class="login100-form-btn"  onclick = "location.href = '${root}order/cart'"" >장바구니</button>
-									<button class="login100-form-btn"  onclick = "location.href = '${root}order/orderform'" />주문하기</button>
-									
+								<form action="${root}cart/insert?product_id=${productDTO.pr_id}"  method="post">
+    								<input type="submit" name="cart" value="장바구니" />
+								</form>
+								<a href="${root}cart/orderform?product_id=${productDTO.pr_id}">
+    								주문하기 
+								</a>
 								</div>
 							</div>
 						</div>
@@ -97,3 +100,4 @@
 </body>
 
 </html>
+
