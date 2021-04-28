@@ -27,6 +27,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.jangyuyuseo.spring.mapper.CartMapper;
 import com.jangyuyuseo.spring.mapper.CartProductMapper;
 import com.jangyuyuseo.spring.mapper.CategoryMapper;
+import com.jangyuyuseo.spring.mapper.OrderMapper;
+import com.jangyuyuseo.spring.mapper.OrderProductMapper;
 import com.jangyuyuseo.spring.mapper.ProductMapper;
 import com.jangyuyuseo.spring.mapper.UserMapper;
 import com.jangyuyuseo.spring.dto.UserDTO;
@@ -143,6 +145,24 @@ public class ServletAppContext implements WebMvcConfigurer {
 		return factoryBean;
 	}
 	
+	//OrderMapper 등록
+	@Bean
+	public MapperFactoryBean<OrderMapper> getOrderMapper(SqlSessionFactory factory) throws Exception{
+		MapperFactoryBean<OrderMapper> factoryBean 
+		= new MapperFactoryBean<OrderMapper>(OrderMapper.class);
+		factoryBean.setSqlSessionFactory(factory);
+		return factoryBean;
+	}
+	
+	//OrderProductMapper 등록
+	@Bean
+	public MapperFactoryBean<OrderProductMapper> getOrderProductMapper(SqlSessionFactory factory) throws Exception{
+		MapperFactoryBean<OrderProductMapper> factoryBean 
+		= new MapperFactoryBean<OrderProductMapper>(OrderProductMapper.class);
+		factoryBean.setSqlSessionFactory(factory);
+		return factoryBean;
+	}
+		
 	//CartProductMapper 등록
 	@Bean
 	public MapperFactoryBean<CartProductMapper> getCartProductMapper(SqlSessionFactory factory) throws Exception{
@@ -151,7 +171,7 @@ public class ServletAppContext implements WebMvcConfigurer {
 		factoryBean.setSqlSessionFactory(factory);
 		return factoryBean;
 	}
-	
+		
 	/*
 	 * Interceptor 등록하기
 	 */
