@@ -87,7 +87,8 @@ public class CartController {
 	}
 
 	@GetMapping("/orderform")
-	public String orderForm(@RequestParam(value = "product_id", required=false , defaultValue = "-1" ) int pr_id, Model model) {
+	public String orderForm(@ModelAttribute("tmpLoginUserDTO") UserDTO tmpLoginUserDTO,
+			@RequestParam(value = "product_id", required=false , defaultValue = "-1" ) int pr_id, Model model) {
 		if(loginUserDTO.isUserLogin() == true) {
 			List<CartProductDTO> cartProductList = new ArrayList<CartProductDTO>();
 			//장바구니에서 넘어온 경우
@@ -129,6 +130,12 @@ public class CartController {
 	public String cartMinusProc(@RequestParam("cart_product_id") int cart_pr_id) {
 		int amount = cartProductService.findProductByCartPrId(cart_pr_id).getPr_amount() - 1;
 		cartProductService.updateCartProductAmount(amount, cart_pr_id);
+		return "redirect:list";
+	}
+	
+	@RequestMapping("/cartProductDelete")
+	public String cartProductDeleteProc(@RequestParam("cart_product_id")int cart_pr_id) throws Exception {
+		cartProductService.deleteCartProduct(cart_pr_id);
 		return "redirect:list";
 	}
 }

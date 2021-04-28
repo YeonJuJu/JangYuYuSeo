@@ -40,5 +40,8 @@ public class CartProductService {
 	public CartProductDTO findProductByCartPrId(int cart_pr_id) {
 		return cartProductDAO.findProductByCartPrId(cart_pr_id);
 	}
+	public void deleteCartProduct(int cart_pr_id) {
+		cartProductDAO.deleteCartProduct(cart_pr_id);
+	}
 	
 }

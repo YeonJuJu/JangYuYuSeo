@@ -61,19 +61,12 @@
 			    if(number<1){ 
 					alert("수량은 1개 이상 입력해 주십시오."); 
 					return; 
-				} 
-<<<<<<< HEAD
+			    }
 	  		}
 	  		// 결과 출력
 	  		result.value = number;
 	  		total.innerText = (number*price.innerText).toLocaleString( 'ko-KR', { style: 'currency', currency: 'KRW' } );
-=======
-	  		
-	  		// 결과 출력
-	  		result.value = number;
-	  		total.innerText = (number*price.innerText).toLocaleString( 'ko-KR', { style: 'currency', currency: 'KRW' } );
 
->>>>>>> 794a82e32b5c5c0ec295849ed82ca9a731b3a602
 		}
 	
 	</script>
@@ -142,6 +135,11 @@
 									<td id='total${product.cart_pr_id}'>
 									₩<fmt:formatNumber value="${product.total_price}" pattern="#,###,###" />
 									</td> 
+									<td class="border-bottom-0">
+										<button type="button" class="close" onClick="location.href='${root }cartProductDelete?cart_product_id=${product.cart_pr_id}'">
+											<span aria-hidden="true"><i class="fa fa-close"></i></span>
+										</button>
+									</td>
 								</tr>
 
 
