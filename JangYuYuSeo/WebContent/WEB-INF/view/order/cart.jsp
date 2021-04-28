@@ -19,15 +19,35 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="${root}css02/style.css">
 	<script type="text/javascript">
+			
+			function update_amount(id){
+				 const result = document.getElementById("count"+id.toString());
+				  // 현재 화면에 표시된 값
+		 		let number = result.value;
+		 		if(number>100){ 
+					alert("최대 구매 수량은 100개 입니다."); 
+					return; 
+				} else if(number<1){ 
+					alert("수량은 1개 이상 입력해 주십시오."); 
+					return; 
+				} 
+				var form = document.createElement('form');
+				form.setAttribute('method', 'post');
+				form.setAttribute('action', "/JangYuYuSeo/cart/update_amount?cart_product_id="+id+"&amount="+number);
+				document.charset = "utf-8";
+				document.body.appendChild(form);
+				form.submit();
+				alert("수량이 변경되었습니다."); 
+			}
 
 			function change_qty2(type,id){ 
 				// element	
 			  const result = document.getElementById("count"+id.toString());
-			  const total = document.getElementById("total"+id.toString());
+			  const total = document.getElementById("total"+id.toString());		
 			  const price = document.getElementById("price"+id.toString());
 			  // 현재 화면에 표시된 값
-			  let number = result.innerText;
-			  
+	 		 let number = result.value;
+	  
 			  // 더하기/빼기
 			  if(type === 'plus') {
 			    number = parseInt(number) + 1;
@@ -36,25 +56,18 @@
             
 					return; 
 				} 
-			    
+	    
 			  }else if(type === 'minus')  {
 			    number = parseInt(number) - 1;
 			    if(number<1){ 
 					alert("수량은 1개 이상 입력해 주십시오."); 
 					return; 
 				} 
+	  		
+	  		// 결과 출력
+	  		result.value = number;
+	  		total.innerText = (number*price.innerText).toLocaleString( 'ko-KR', { style: 'currency', currency: 'KRW' } );
 
-			  }
-			  // 결과 출력
-			  result.innerText = number;
-			  total.innerText = (number*price.innerText).toLocaleString( 'ko-KR', { style: 'currency', currency: 'KRW' } );
-			} 
-			/* var show_total_amount = basic_amount * this_qty;  */
-			/* $("#ct_qty_txt").text(this_qty); */ 
-			$("#quentity").val(this_qty); 
-
-			/* $("#it_pay").val(show_total_amount); 
-			$("#total_amount").html(show_total_amount.format());  */
 		}
 	
 	</script>
@@ -121,18 +134,17 @@
 									</td>
 									<td class="quantity">
 										<input value="-" type="button" onclick='change_qty2("minus","${product.cart_pr_id}")'>
-										<div id='count${product.cart_pr_id}'>${product.pr_amount}</div>
+										<input id='count${product.cart_pr_id}' type="text" value = "${product.pr_amount}"> 
 										<input value="+" type="button" onClick ='change_qty2("plus","${product.cart_pr_id}")'>
-								
+										<input value="변경" type="button" onClick ='update_amount("${product.cart_pr_id}")'>
 									</td>
 									<td id='total${product.cart_pr_id}'>
 									₩<fmt:formatNumber value="${product.total_price}" pattern="#,###,###" />
-									</td> <!--total price -->
+									</td> 
 								</tr>
 
 
 							</c:forEach>
-
 
 							</tbody>
 						</table>

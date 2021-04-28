@@ -87,18 +87,20 @@ public class CartController {
 	}
 
 	@GetMapping("/orderform")
-	public String orderForm(@ModelAttribute("orderDTO") OrderDTO orderDTO, @RequestParam(value = "product_id", required = false, defaultValue = "-1") int pr_id,
-			Model model, BindingResult result) {
-		// 장바구니 넣는거 어떻게 할 지 몰라서 그냥 .. 복붙해옴 ㅎㅎ 함수로 만들어서 쓰면 되나 ..?
-		if (loginUserDTO.isUserLogin() == true) {
+	public String orderForm(@RequestParam(value = "product_id", required=false , defaultValue = "-1" ) int pr_id, Model model) {
+		if(loginUserDTO.isUserLogin() == true) {
 			List<CartProductDTO> cartProductList = new ArrayList<CartProductDTO>();
-			if (pr_id == -1) {
+			//장바구니에서 넘어온 경우
+			if(pr_id == -1) {
 				int userIdx = loginUserDTO.getUser_idx();
 				int cartId = cartService.findCartDTOByUserId(userIdx).getCart_id();
 				cartProductList = cartProductService.findProductListByCartId(cartId);
-			} else {
-				// 색이랑 사이즈 display에서 가져와야 됨 ㅠㅠ잘 안돼서 임의의 값 넣어놓음
-				int cartPrId = cartInsert(pr_id, "black", "free");
+			}
+			//주문하기로 넘어온 경우 
+			else {
+				//색이랑 사이즈 display에서 가져와야 됨 ㅠㅠ잘 안돼서 임의의 값 넣어놓음 
+				int cartPrId = cartInsert(pr_id,"black","free");
+
 				CartProductDTO orderProductDTO = cartProductService.findProductByCartPrId(cartPrId);
 				cartProductList.add(orderProductDTO);
 			}
@@ -108,6 +110,13 @@ public class CartController {
 			return "user/login";
 		}
 	}
+
+	@PostMapping("/update_amount")
+	 public String cartUpdateProc (@RequestParam("cart_product_id") int cart_pr_id, @RequestParam("amount") int amount) {
+		cartProductService.updateCartProductAmount(amount, cart_pr_id);
+		return "redirect:list";
+	  }
+	//지금은 플마로 원하는 수량 설정하고 변경눌러야 변경되는데 플마 누를때마다 디비에 반영할지 고민이라 걍 안지우고 넣어 둠 근데 그렇게 하면 누를때마다 화면 새로고침 돼서 조금 정신 없긴 하더라 ㅜㅜ
 
 	@PostMapping("/plus_amount")
 	public String cartPlusProc(@RequestParam("cart_product_id") int cart_pr_id) {
