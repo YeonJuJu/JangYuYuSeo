@@ -62,10 +62,18 @@
 					alert("수량은 1개 이상 입력해 주십시오."); 
 					return; 
 				} 
+<<<<<<< HEAD
 	  		}
 	  		// 결과 출력
 	  		result.value = number;
 	  		total.innerText = (number*price.innerText).toLocaleString( 'ko-KR', { style: 'currency', currency: 'KRW' } );
+=======
+	  		
+	  		// 결과 출력
+	  		result.value = number;
+	  		total.innerText = (number*price.innerText).toLocaleString( 'ko-KR', { style: 'currency', currency: 'KRW' } );
+
+>>>>>>> 794a82e32b5c5c0ec295849ed82ca9a731b3a602
 		}
 	
 	</script>
@@ -91,10 +99,13 @@
 								<tr>
 									<th>&nbsp;</th>
 									<th>&nbsp;</th>
-									<th>Product</th>
-									<th>Price</th>
-									<th>Quantity</th>
-									<th>total</th>
+
+									<th style="font-weight:bold; font-size:1em">Product</th>
+									<th style="font-weight:bold; font-size:1em">Price</th>
+									<th style="font-weight:bold; font-size:1em">Quantity</th>
+									<th style="font-weight:bold; font-size:1em">total</th>
+									<th>&nbsp;</th>
+                  
 								</tr>
 							</thead>
 							<tbody>
