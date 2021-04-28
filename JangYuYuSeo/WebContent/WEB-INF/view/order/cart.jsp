@@ -136,7 +136,7 @@
 									₩<fmt:formatNumber value="${product.total_price}" pattern="#,###,###" />
 									</td> 
 									<td class="border-bottom-0">
-										<button type="button" class="close" onClick="location.href='${root }cartProductDelete?cart_product_id=${product.cart_pr_id}'">
+										<button type="button" class="close" onClick="location.href='${root }cart/cartProductDelete?cart_product_id=${product.cart_pr_id}'">
 											<span aria-hidden="true"><i class="fa fa-close"></i></span>
 										</button>
 									</td>
