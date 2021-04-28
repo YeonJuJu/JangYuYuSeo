@@ -1,7 +1,5 @@
 package com.jangyuyuseo.spring.controller;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,6 +65,7 @@ public class CartController {
 		cartProductDTO.setPr_size(size);
 		return cartProductService.addCartProduct(cartProductDTO,cartId);
 	}
+
 	@GetMapping("/list")
 	public String cart(Model model) {
 		List<CartProductDTO> cartProductList = null;
@@ -120,7 +119,7 @@ public class CartController {
 		cartProductService.updateCartProductAmount(amount, cart_pr_id);
 		return "redirect:list";
 	  }
-	//지금은 플마로 원하는 수량 설정하고 변경눌러야 변경되는데 플마 누를때마다 디비에 반영할지 고민이라 걍 안지우고 넣어 둠 근데 그렇게 하면 누를때마다 화면 새로고침 돼서 조금 정신 없긴 하더라 ㅜㅜ
+	//지금은 플마로 원하는 수량 설정하고 변경눌러야 변경되는데 플마 누를때마다 디비에 반영할지 고민이라 걍 안지우고 넣어 둠 근데 그렇게 하면 누를때마다 화면 새로고침 돼서 조금 정신 없긴 하더라 ㅜ
 	@PostMapping("/plus_amount")
 	 public String cartPlusProc (@RequestParam("cart_product_id") int cart_pr_id) {
 		int amount = cartProductService.findProductByCartPrId(cart_pr_id).getPr_amount() + 1;
