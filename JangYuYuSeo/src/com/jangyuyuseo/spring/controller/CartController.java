@@ -76,10 +76,12 @@ public class CartController {
 
 	@PostMapping("/insert")
 	public String cartInsertProc(@ModelAttribute("tmpLoginUserDTO") UserDTO tmpLoginUserDTO,
-			@RequestParam("product_id") int pr_id, HttpSession session) {
+			@RequestParam("product_id") int pr_id, 
+			@RequestParam("color") String color,
+			@RequestParam("size") String size) {
 		if (loginUserDTO.isUserLogin() == true) {
 			// 색이랑 사이즈 display에서 가져와야 됨 ㅠㅠ잘 안돼서 임의의 값 넣어놓음
-			cartInsert(pr_id, "black", "free");
+			cartInsert(pr_id, color, size);
 			return "redirect:list";
 		} else {
 			return "user/login";
@@ -88,7 +90,10 @@ public class CartController {
 
 	@GetMapping("/orderform")
 	public String orderForm(@ModelAttribute("tmpLoginUserDTO") UserDTO tmpLoginUserDTO,
-			@RequestParam(value = "product_id", required=false , defaultValue = "-1" ) int pr_id, Model model) {
+			@RequestParam(value = "product_id", required=false , defaultValue = "-1" ) int pr_id,
+			@RequestParam(value = "color", required=false) String color,
+			@RequestParam(value = "size", required=false) String size,
+			Model model) {
 		if(loginUserDTO.isUserLogin() == true) {
 			List<CartProductDTO> cartProductList = new ArrayList<CartProductDTO>();
 			//장바구니에서 넘어온 경우
@@ -99,9 +104,7 @@ public class CartController {
 			}
 			//주문하기로 넘어온 경우 
 			else {
-				//색이랑 사이즈 display에서 가져와야 됨 ㅠㅠ잘 안돼서 임의의 값 넣어놓음 
-				int cartPrId = cartInsert(pr_id,"black","free");
-
+				int cartPrId = cartInsert(pr_id,color,size);
 				CartProductDTO orderProductDTO = cartProductService.findProductByCartPrId(cartPrId);
 				cartProductList.add(orderProductDTO);
 			}
