@@ -18,7 +18,6 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="${root}css02/style.css">
-	
 	<script type="text/javascript">
 			
 			function update_amount(id){
@@ -142,7 +141,7 @@
 							</c:forEach>
 							<tr class="alert" role="alert">
 									<td>
-									총 금액
+									&nbsp;&nbsp;총 금액
 									</td>
 									<td></td>
 									<td></td>

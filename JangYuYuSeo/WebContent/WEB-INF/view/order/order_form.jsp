@@ -58,61 +58,6 @@
 				<div class="row">
 					<div class="col-md-12">
 						<h3 class="h5 mb-4 text-left">Product List</h3>
-<<<<<<< HEAD
-					</div>
-					<div class="table-wrap">
-						<table class="table">
-							<thead class="thead-primary">
-								<tr>
-									<th>&nbsp;</th>
-									<th style="font-weight: bold; font-size: 1em">Product</th>
-									<th style="font-weight: bold; font-size: 1em">Price</th>
-									<th style="font-weight: bold; font-size: 1em">Quantity</th>
-									<th style="font-weight: bold; font-size: 1em">total</th>
-									<th>&nbsp;</th>
-								</tr>
-							</thead>
-							<tbody>
-	
-								<c:forEach var="product" items="${cartProductList}">
-									<tr class="alert" role="alert">
-										<td>
-										</td>
-										<td>
-											<div class="img"
-												style="background-image: url(${pageContext.request.contextPath}/${product.pr_image});"></div>
-										</td>
-										<td>
-											<div class="product">
-												<div>${product.pr_name }</div>
-												<medium class="text-muted">${product.pr_size}&nbsp;&nbsp;${product.pr_color}</medium>
-											</div>
-										</td>
-										<td>₩<fmt:formatNumber value="${product.pr_price}"
-												pattern="#,###,###" />
-											<div id='price' style="display: none">${product.pr_price}</div>
-										</td>
-										<td class="quantity">
-											<div id='count'>${product.pr_amount}</div>
-										</td>
-										<td id='total'>₩<fmt:formatNumber
-												value="${product.total_price}" pattern="#,###,###" />
-										</td>
-									</tr>
-								</c:forEach>
-								<tr class="alert" role="alert">
-									<td></td>
-									<td>총 금액</td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td>
-									₩<fmt:formatNumber value="${total}" pattern="#,###,###" />
-									</td> 
-								</tr>
-							</tbody>
-						</table>
-=======
 					
 						<div class="table-wrap">
 							<table class="table">
@@ -155,10 +100,18 @@
 											</td>
 										</tr>
 									</c:forEach>
+									<tr class="alert" role="alert">
+									<td>&nbsp;&nbsp;총 금액</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td>
+									₩<fmt:formatNumber value="${total}" pattern="#,###,###" />
+									</td> 
+								</tr>
 								</tbody>
 							</table>
 						</div>
->>>>>>> 1b0a454389ae64dfe87488cd8aa8e1c764df68db
 					</div>
 				</div>
 			</div>
