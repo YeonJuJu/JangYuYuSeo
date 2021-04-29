@@ -26,6 +26,37 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	
+<script type="text/javascript">
+			
+			function insert_cart(id) {
+				var colorSelect = document.getElementById("color");
+				var color = colorSelect.options[document.getElementById("color").selectedIndex].value;
+
+				var sizeSelect = document.getElementById("size");
+				var size = sizeSelect.options[document.getElementById("size").selectedIndex].value;
+				
+				var form = document.createElement('form');
+				form.setAttribute('method', 'post');
+				form.setAttribute('action', "/JangYuYuSeo/cart/insert?product_id="+id+"&color="+color+"&size="+size);
+				document.charset = "utf-8";
+				document.body.appendChild(form);
+				form.submit();
+			}
+			
+			function order_product(id){
+				var colorSelect = document.getElementById("color");
+				var color = colorSelect.options[document.getElementById("color").selectedIndex].value;
+
+				var sizeSelect = document.getElementById("size");
+				var size = sizeSelect.options[document.getElementById("size").selectedIndex].value;
+				
+				location.href = "/JangYuYuSeo/cart/orderform?product_id="+id+"&color="+color+"&size="+size;
+				
+			}
+
+	
+	</script>
 </head>
 
 <body>
@@ -59,14 +90,14 @@
 									₩
 								</p>
 								<div class="text-muted"> Color&nbsp; 
-									<select path="pr_color">
+									<select id="color">
 										<c:forEach var="color" items="${colorList}">
 											<option value=${color}>${color}</option>
 										</c:forEach>
 									</select>
 								</div>
 								<div class="text-muted"> Size&nbsp;
-									<select path="pr_size">
+									<select id="size">
 										<c:forEach var="size" items="${sizeList}">
 											<option value=${size}>${size}</option>
 										</c:forEach>
@@ -74,12 +105,8 @@
 								</div>
 								<br></br>
 								<div>
-								<form action="${root}cart/insert?product_id=${productDTO.pr_id}"  method="post">
-    								<input type="submit" name="cart" value="장바구니" />
-								</form>
-								<a href="${root}cart/orderform?product_id=${productDTO.pr_id}">
-    								주문하기 
-								</a>
+								<input value="장바구니" type="button" onClick ='insert_cart("${productDTO.pr_id}")'>
+								<input value="주문하기" type="button" onClick ='order_product("${productDTO.pr_id}")'>
 								</div>
 							</div>
 						</div>

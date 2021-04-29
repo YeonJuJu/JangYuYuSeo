@@ -61,7 +61,9 @@
 			    if(number<1){ 
 					alert("수량은 1개 이상 입력해 주십시오."); 
 					return; 
-				} 
+
+			    }
+
 	  		}
 	  		// 결과 출력
 	  		result.value = number;
@@ -102,8 +104,8 @@
 							<c:forEach var="product" items="${cartProductList}">
 								<tr class="alert" role="alert">
 									<td><label class="checkbox-wrap checkbox-primary">
-											<input type="checkbox" checked> 
-											<span class="checkmark"></span>
+											<input type="checkbox" checked> <span
+											class="checkmark"></span>
 									</label></td>
 									<td>
 										<div class="img"
@@ -131,6 +133,11 @@
 									<td id='total${product.cart_pr_id}'>
 									₩<fmt:formatNumber value="${product.total_price}" pattern="#,###,###" />
 									</td> 
+									<td class="border-bottom-0">
+										<button type="button" class="close" onClick="location.href='${root }cart/cartProductDelete?cart_product_id=${product.cart_pr_id}'">
+											<span aria-hidden="true"><i class="fa fa-close"></i></span>
+										</button>
+									</td>
 								</tr>
 
 
