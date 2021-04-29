@@ -64,11 +64,16 @@ public class CartController {
 	public String cart(Model model) {
 		List<CartProductDTO> cartProductList = null;
 		int cartId = 0;
+		int total = 0;
 		if (loginUserDTO.isUserLogin() == true) {
 			int userIdx = loginUserDTO.getUser_idx();
 			cartId = cartService.findCartDTOByUserId(userIdx).getCart_id();
 			cartProductList = cartProductService.findProductListByCartId(cartId);
+			int len = cartProductList.size();
+			for(int i=0;i<len;i++)
+				total+=cartProductList.get(i).getTotal_price();
 		}
+		model.addAttribute("total",total);
 		model.addAttribute("cartId", cartId);
 		model.addAttribute("cartProductList", cartProductList);
 		return "order/cart";
@@ -108,6 +113,11 @@ public class CartController {
 				CartProductDTO orderProductDTO = cartProductService.findProductByCartPrId(cartPrId);
 				cartProductList.add(orderProductDTO);
 			}
+			int total = 0;
+			int len = cartProductList.size();
+			for(int i=0;i<len;i++)
+				total+=cartProductList.get(i).getTotal_price();
+			model.addAttribute("total",total);
 			model.addAttribute("cartProductList", cartProductList);
 			return "order/order_form";
 		} else {

@@ -68,12 +68,15 @@
 									<th style="font-weight: bold; font-size: 1em">Price</th>
 									<th style="font-weight: bold; font-size: 1em">Quantity</th>
 									<th style="font-weight: bold; font-size: 1em">total</th>
+									<th>&nbsp;</th>
 								</tr>
 							</thead>
 							<tbody>
 	
 								<c:forEach var="product" items="${cartProductList}">
 									<tr class="alert" role="alert">
+										<td>
+										</td>
 										<td>
 											<div class="img"
 												style="background-image: url(${pageContext.request.contextPath}/${product.pr_image});"></div>
@@ -96,6 +99,16 @@
 										</td>
 									</tr>
 								</c:forEach>
+								<tr class="alert" role="alert">
+									<td></td>
+									<td>총 금액</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td>
+									₩<fmt:formatNumber value="${total}" pattern="#,###,###" />
+									</td> 
+								</tr>
 							</tbody>
 						</table>
 					</div>

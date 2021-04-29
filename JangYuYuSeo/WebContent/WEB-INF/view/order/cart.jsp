@@ -47,7 +47,6 @@
 			  const price = document.getElementById("price"+id.toString());
 			  // 현재 화면에 표시된 값
 	 		 let number = result.value;
-	  
 			  // 더하기/빼기
 			  if(type === 'plus') {
 			    number = parseInt(number) + 1;
@@ -66,7 +65,6 @@
 	  		// 결과 출력
 	  		result.value = number;
 	  		total.innerText = (number*price.innerText).toLocaleString( 'ko-KR', { style: 'currency', currency: 'KRW' } );
-
 		}
 	
 	</script>
@@ -141,9 +139,19 @@
 										</button>
 									</td>
 								</tr>
-
-
 							</c:forEach>
+							<tr class="alert" role="alert">
+									<td>
+									총 금액
+									</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td>
+									₩<fmt:formatNumber value="${total}" pattern="#,###,###" />
+									</td> 
+								</tr>
 							</tbody>
 						</table>
 					</div>
@@ -153,6 +161,11 @@
 						<button style="background:#99b19c; color:#fff; border:none; padding:0 2em; cursor:pointer; float:right;">Order</button>
 					</a>
 					</div>
+					<span>
+						<a href="${root}cart/orderform">
+							<button style="background:#99b19c; color:#fff; border:none; padding:0 2em; cursor:pointer; float:right; margin-right:10px">선택상품 주문 </button>
+						</a>
+					</span>
 				</div>
 			</div>
 		</div>
