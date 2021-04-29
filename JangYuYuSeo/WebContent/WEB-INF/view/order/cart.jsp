@@ -18,6 +18,7 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="${root}css02/style.css">
+	
 	<script type="text/javascript">
 			
 			function update_amount(id){
@@ -100,12 +101,12 @@
 								</tr>
 							</thead>
 							<tbody>
-							
+							 <form id="check" method="get" action="${root}cart/orderform" >
 							<c:forEach var="product" items="${cartProductList}">
 								<tr class="alert" role="alert">
 									<td><label class="checkbox-wrap checkbox-primary">
-											<input type="checkbox" checked> <span
-											class="checkmark"></span>
+											<input type="checkbox" checked name="checkProduct" value="${product.cart_pr_id}">
+											<span class="checkmark"></span>
 									</label></td>
 									<td>
 										<div class="img"
@@ -157,15 +158,11 @@
 					</div>
 					<br>
 					<div>
-					<a href="${root}cart/orderform">
+					
 						<button style="background:#99b19c; color:#fff; border:none; padding:0 2em; cursor:pointer; float:right;">Order</button>
-					</a>
+					
 					</div>
-					<span>
-						<a href="${root}cart/orderform">
-							<button style="background:#99b19c; color:#fff; border:none; padding:0 2em; cursor:pointer; float:right; margin-right:10px">선택상품 주문 </button>
-						</a>
-					</span>
+					</form>
 				</div>
 			</div>
 		</div>
