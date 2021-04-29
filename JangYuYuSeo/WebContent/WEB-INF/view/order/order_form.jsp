@@ -54,10 +54,11 @@
 						<h2 class="heading-section">Order Form</h2>
 					</div>
 				</div>
-				<br>
+				
 				<div class="row">
 					<div class="col-md-12">
 						<h3 class="h5 mb-4 text-left">Product List</h3>
+<<<<<<< HEAD
 					</div>
 					<div class="table-wrap">
 						<table class="table">
@@ -111,6 +112,53 @@
 								</tr>
 							</tbody>
 						</table>
+=======
+					
+						<div class="table-wrap">
+							<table class="table">
+								<thead class="thead-primary">
+									<tr>
+										<th style="font-weight: bold; font-size: 1em">&nbsp;</th>
+										<th style="font-weight: bold; font-size: 1em">Product</th>
+										<th style="font-weight: bold; font-size: 1em">Price</th>
+										<th style="font-weight: bold; font-size: 1em">Quantity</th>
+										<th style="font-weight: bold; font-size: 1em">total</th>
+									</tr>
+								</thead>
+								<tbody>
+		
+									<c:forEach var="product" items="${cartProductList}">
+										<tr class="alert" role="alert">
+											<td>
+												<%-- <div class="img"
+													style="background-image: url(${pageContext.request.contextPath}/${product.pr_image});"></div> --%>
+												<div class="img" style="background-image: url(${root}images02/cart.png); width:60px; height:60px;"></div>
+											</td>
+											
+											<td>
+												<div class="product">
+													<div>${product.pr_name }</div>
+													<medium class="text-muted">${product.pr_size}&nbsp;&nbsp;${product.pr_color}</medium>
+												</div>
+											</td>
+											
+											<td>₩<fmt:formatNumber value="${product.pr_price}" pattern="#,###,###" />
+												<div id='price' style="display: none">${product.pr_price}</div>
+											</td>
+											
+											<td class="quantity">
+												<div id='count'>${product.pr_amount}</div>
+											</td>
+											
+											<td id='total'>₩<fmt:formatNumber
+													value="${product.total_price}" pattern="#,###,###" />
+											</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
+>>>>>>> 1b0a454389ae64dfe87488cd8aa8e1c764df68db
 					</div>
 				</div>
 			</div>
@@ -128,27 +176,30 @@
 	
 							<div class="wrap-input100 validate-input"
 								data-validate="Name is required">
-								<span class="label">Name</span> <input class="input100"
-									placeholder="Enter name" /> <span class="focus-input100"></span>
+								<span class="label">Name</span> 
+								<input name="order_name" class="input100" placeholder="Enter name" /> 
+								<span class="focus-input100"></span>
 							</div>
 	
 							<div class="wrap-input100 validate-input"
 								data-validate="Address is required">
-								<span class="label">Address</span> <input class="input100"
-									placeholder="Enter address" /> <span class="focus-input100"></span>
+								<span class="label">Address</span> 
+								<input name="order_address" class="input100" placeholder="Enter address" /> 
+									<span class="focus-input100"></span>
 							</div>
 	
 							<div class="wrap-input100 validate-input"
 								data-validate="Password is required">
-								<span class="label">Phone</span> <input class="input100"
-									placeholder="Enter phone number" /> <span class="focus-input100"></span>
+								<span class="label">Phone</span> 
+								<input name="order_phone" class="input100" placeholder="Enter phone number" /> 
+								<span class="focus-input100"></span>
 							</div>
 	
 							<div class="wrap-input100 validate-input"
 								data-validate="Password is required">
-								<span class="label">Message</span> <input class="input100"
-									placeholder="Enter shipping message" /> <span
-									class="focus-input100"></span>
+								<span class="label">Message</span> 
+								<input name="order_message" class="input100" placeholder="Enter shopping message" /> 
+								<span class="focus-input100"></span>
 							</div>
 	
 	

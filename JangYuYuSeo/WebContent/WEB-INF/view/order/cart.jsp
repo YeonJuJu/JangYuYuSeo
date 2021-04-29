@@ -61,7 +61,9 @@
 			    if(number<1){ 
 					alert("수량은 1개 이상 입력해 주십시오."); 
 					return; 
+
 			    }
+
 	  		}
 	  		// 결과 출력
 	  		result.value = number;
@@ -91,13 +93,10 @@
 								<tr>
 									<th>&nbsp;</th>
 									<th>&nbsp;</th>
-
 									<th style="font-weight:bold; font-size:1em">Product</th>
 									<th style="font-weight:bold; font-size:1em">Price</th>
 									<th style="font-weight:bold; font-size:1em">Quantity</th>
 									<th style="font-weight:bold; font-size:1em">total</th>
-									<th>&nbsp;</th>
-                  
 								</tr>
 							</thead>
 							<tbody>
