@@ -1,5 +1,7 @@
 package com.jangyuyuseo.spring.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -18,5 +20,9 @@ public class OrderDAO {
 	
 	public void addOrderDTO(OrderDTO orderDTO) {
 		orderMapper.addOrderDTO(orderDTO);
+	}
+	
+	public List<OrderDTO> getOrderListByUserIdx(int order_user_idx){
+		return orderMapper.getOrderListByUserIdx(order_user_idx);
 	}
 }

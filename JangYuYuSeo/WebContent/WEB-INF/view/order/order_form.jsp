@@ -75,9 +75,7 @@
 									<c:forEach var="product" items="${cartProductList}">
 										<tr class="alert" role="alert">
 											<td>
-												<%-- <div class="img"
-													style="background-image: url(${pageContext.request.contextPath}/${product.pr_image});"></div> --%>
-												<div class="img" style="background-image: url(${root}images02/cart.png); width:60px; height:60px;"></div>
+												<div class="img" style="background-image: url(${pageContext.request.contextPath}/${product.pr_image}); width:60px; height:60px;"></div>
 											</td>
 											
 											<td>

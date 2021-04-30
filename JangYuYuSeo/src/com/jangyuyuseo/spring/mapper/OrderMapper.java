@@ -1,5 +1,7 @@
 package com.jangyuyuseo.spring.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
@@ -11,4 +13,7 @@ public interface OrderMapper {
 	
 	@Insert("INSERT INTO ORDER_TABLE VALUES(#{order_id}, #{order_user_idx}, #{order_name}, #{order_address}, #{order_phone}, #{order_message}, SYSDATE)")
 	public void addOrderDTO(OrderDTO orderDTO);
+	
+	@Select("SELECT * FROM ORDER_TABLE WHERE ORDER_USER_IDX=#{order_user_idx}")
+	public List<OrderDTO> getOrderListByUserIdx(int order_user_idx);
 }

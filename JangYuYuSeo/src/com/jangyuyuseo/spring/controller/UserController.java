@@ -1,5 +1,7 @@
 package com.jangyuyuseo.spring.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
@@ -15,7 +17,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.jangyuyuseo.spring.dto.OrderDTO;
 import com.jangyuyuseo.spring.dto.UserDTO;
+import com.jangyuyuseo.spring.service.OrderService;
 import com.jangyuyuseo.spring.service.UserService;
 import com.jangyuyuseo.spring.validator.UserValidator;
 @Controller
@@ -24,6 +28,9 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private OrderService orderService;
 	
 	@Resource(name="loginUserDTO")
 	private UserDTO loginUserDTO;
@@ -78,6 +85,10 @@ public class UserController {
 	@GetMapping("/myPage")
 	public String myPage(Model model) {
 		model.addAttribute("loginUserDTO", loginUserDTO);
+
+		List<OrderDTO> orderDTOList = orderService.getOrderListByUserIdx(loginUserDTO.getUser_idx());
+		model.addAttribute("orderDTOList", orderDTOList);
+		
 		return "/user/myPage";
 	}
 	
