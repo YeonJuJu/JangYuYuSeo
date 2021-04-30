@@ -42,7 +42,7 @@
 	<script src="${root}vendor/daterangepicker/moment.min.js"></script>
 	<script src="${root}vendor/daterangepicker/daterangepicker.js"></script>
 	<script src="${root}vendor/countdowntime/countdowntime.js"></script>
-	<script src="js/main.js"></script>
+	<script src="${root}js/main.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -81,18 +81,24 @@ $(document).ready(function() {
 	});
 
 //이미지 파일 업로드
-function uploadSummernoteImageFile(file, editor) {
+function uploadSummernoteImageFile(file, editor) {	
 	data = new FormData();
 	data.append("file", file);
 	$.ajax({
 		data : data,
 		type : "POST",
-		url : "/uploadSummernoteImageFile",
+		url : "/JangYuYuSeo/product/uploadSummernoteImageFile",
 		contentType : false,
 		processData : false,
 		success : function(data) {
         	//항상 업로드된 파일의 url이 있어야 한다.
-			$(editor).summernote('insertImage', data.url);
+        	/* path = ('http://localhost:8090/JangYuYuseo/WebContent/resources'+data.url); */
+        	/* path = ('file:///C:/Users/301-14/Documents/GitHub/JangYuYuSeo/JangYuYuSeo/WebContent/resources'+data.url); */
+        	/* path = ($(root)+'WebContent/resources'+data.url); */
+        	//path = ('/JangYuYuSeo/resources'+data.url);
+        	path='file:///C:/Users/301-14/Documents/GitHub/JangYuYuSeo/JangYuYuSeo/WebContent/resources/summernote_images/test.png';
+        	alert(path);
+			$(editor).summernote('insertImage', path);
 		}
 	});
 }

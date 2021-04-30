@@ -4,5 +4,5 @@
 <c:set var="root" value="${pageContext.request.contextPath}/"/>    
 <script type="text/javascript">
 	alert('상품등록 완료되었습니다.');
-	location.href='${root}}/product/manage';
+	location.href='${root}/product/manage';
 </script>

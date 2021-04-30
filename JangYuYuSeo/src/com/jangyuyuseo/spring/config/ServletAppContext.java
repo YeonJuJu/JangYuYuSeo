@@ -77,7 +77,7 @@ public class ServletAppContext implements WebMvcConfigurer {
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		WebMvcConfigurer.super.addResourceHandlers(registry);
-		registry.addResourceHandler("/summernoteImage/**").addResourceLocations("file:///C:/summernote_image/");
+		//registry.addResourceHandler("/summernoteImage/**").addResourceLocations("file:///C:/Users/301-14/Documents/GitHub/JangYuYuSeo/JangYuYuSeo/WebContent/resources/summernote_images/");
 		registry.addResourceHandler("/**").addResourceLocations("/resources/");
 	}
 

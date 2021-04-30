@@ -126,7 +126,8 @@ public class ProductController {
 	  		return "product/register";
 	  	}
 	
-
+	  	System.out.println(productDTO.getPr_detail());
+	  	
 	  	String uploadPath = request.getSession().getServletContext().getRealPath("/")+"/resources";
 	  	String imgUploadPath = uploadPath + File.separator + "images";
 	  	String fileName = null;
@@ -151,7 +152,7 @@ public class ProductController {
 		
 		JsonObject jsonObject = new JsonObject();
 		
-		String fileRoot = "C:\\summernote_image\\";	//저장될 외부 파일 경로
+		String fileRoot = "C:\\Users\\301-14\\Documents\\GitHub\\JangYuYuSeo\\JangYuYuSeo\\WebContent\\resources\\summernote_images\\";	//저장될 외부 파일 경로
 		String originalFileName = multipartFile.getOriginalFilename();	//오리지날 파일명
 		String extension = originalFileName.substring(originalFileName.lastIndexOf("."));	//파일 확장자
 				
@@ -162,7 +163,7 @@ public class ProductController {
 		try {
 			InputStream fileStream = multipartFile.getInputStream();
 			FileUtils.copyInputStreamToFile(fileStream, targetFile);	//파일 저장
-			jsonObject.addProperty("url", "/summernoteImage/"+savedFileName);
+			jsonObject.addProperty("url", "/summernote_images/"+savedFileName);
 			jsonObject.addProperty("responseCode", "success");
 				
 		} catch (IOException e) {
