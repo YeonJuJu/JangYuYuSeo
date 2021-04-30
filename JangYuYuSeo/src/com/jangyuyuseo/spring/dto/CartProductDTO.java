@@ -14,4 +14,5 @@ public class CartProductDTO {
 	private String pr_name;
 	private int pr_price;
 	private int total_price;
+	private boolean is_checked;
 }

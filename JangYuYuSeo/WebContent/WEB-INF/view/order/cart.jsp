@@ -47,7 +47,6 @@
 			  const price = document.getElementById("price"+id.toString());
 			  // 현재 화면에 표시된 값
 	 		 let number = result.value;
-	  
 			  // 더하기/빼기
 			  if(type === 'plus') {
 			    number = parseInt(number) + 1;
@@ -100,12 +99,12 @@
 								</tr>
 							</thead>
 							<tbody>
-							
+							 <form id="check" method="get" action="${root}cart/orderform" >
 							<c:forEach var="product" items="${cartProductList}">
 								<tr class="alert" role="alert">
 									<td><label class="checkbox-wrap checkbox-primary">
-											<input type="checkbox" checked> <span
-											class="checkmark"></span>
+											<input type="checkbox" checked name="checkProduct" value="${product.cart_pr_id}">
+											<span class="checkmark"></span>
 									</label></td>
 									<td>
 										<div class="img"
@@ -139,18 +138,29 @@
 										</button>
 									</td>
 								</tr>
-
-
 							</c:forEach>
+							<tr class="alert" role="alert">
+									<td>
+									&nbsp;&nbsp;총 금액
+									</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td>
+									₩<fmt:formatNumber value="${total}" pattern="#,###,###" />
+									</td> 
+								</tr>
 							</tbody>
 						</table>
 					</div>
 					<br>
 					<div>
-					<a href="${root}cart/orderform">
+					
 						<button style="background:#99b19c; color:#fff; border:none; padding:0 2em; cursor:pointer; float:right;">Order</button>
-					</a>
+					
 					</div>
+					</form>
 				</div>
 			</div>
 		</div>

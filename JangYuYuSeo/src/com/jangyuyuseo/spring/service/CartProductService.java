@@ -25,6 +25,7 @@ public class CartProductService {
 			//새로추가 
 			cartProductDTO.setPr_amount(1);
 			cartProductDTO.setTotal_price(cartProductDTO.getPr_price());
+			cartProductDTO.set_checked(false);
 			cartProductDAO.addCartProduct(cartProductDTO);
 		}
 		//있으면 수량만 ++
@@ -42,6 +43,13 @@ public class CartProductService {
 	}
 	public void deleteCartProduct(int cart_pr_id) {
 		cartProductDAO.deleteCartProduct(cart_pr_id);
+	}
+	//카트 안의 상품의 check를 false로 초기화하는 메소드
+	public void initCartCheckedFalse(int cart_id) {
+		cartProductDAO.initCartCheckedFalse(cart_id);
+	}
+	public void setCheckedTrue(int cart_pr_id) {
+		cartProductDAO.setCheckedTrue(cart_pr_id);
 	}
 	
 }

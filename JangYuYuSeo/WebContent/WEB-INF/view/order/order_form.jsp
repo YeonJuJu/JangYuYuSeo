@@ -100,6 +100,15 @@
 											</td>
 										</tr>
 									</c:forEach>
+									<tr class="alert" role="alert">
+									<td>&nbsp;&nbsp;총 금액</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td>
+									₩<fmt:formatNumber value="${total}" pattern="#,###,###" />
+									</td> 
+								</tr>
 								</tbody>
 							</table>
 						</div>

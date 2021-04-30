@@ -40,4 +40,13 @@ public class CartProductDAO {
 	public void deleteCartProduct(int cart_pr_id) {
 		cartProductMapper.deleteCartProduct(cart_pr_id);
 	}
+	public void initCartCheckedFalse(int cart_id) {
+		List<CartProductDTO> cartProductList = findProductListByCartId(cart_id);
+		int len = cartProductList.size();
+		for(int i=0;i<len;i++)
+			cartProductMapper.initCartCheckedFalse(cartProductList.get(i).getCart_pr_id());
+	}
+	public void setCheckedTrue(int cart_pr_id) {
+		cartProductMapper.setCheckedTrue(cart_pr_id);
+	}
 }
