@@ -1,5 +1,7 @@
 package com.jangyuyuseo.spring.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +12,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.jangyuyuseo.spring.dto.CartDTO;
+import com.jangyuyuseo.spring.dto.CartProductDTO;
 import com.jangyuyuseo.spring.dto.OrderDTO;
+import com.jangyuyuseo.spring.dto.OrderProductDTO;
 import com.jangyuyuseo.spring.dto.UserDTO;
+import com.jangyuyuseo.spring.service.CartProductService;
+import com.jangyuyuseo.spring.service.CartService;
+import com.jangyuyuseo.spring.service.OrderProductService;
 import com.jangyuyuseo.spring.service.OrderService;
 
 @Controller
@@ -23,6 +31,15 @@ public class OrderController {
 	
 	@Autowired
 	private OrderService orderService;
+	
+	@Autowired
+	private OrderProductService orderProductService;
+	
+	@Autowired
+	private CartService cartService;
+	
+	@Autowired
+	private CartProductService cartProductService;
 	
 	@PostMapping("/order_proc")
 	public String orderProc(@ModelAttribute("orderDTO") OrderDTO orderDTO, Model model, BindingResult result) {
@@ -37,12 +54,27 @@ public class OrderController {
 		orderDTO.setOrder_id(order_id);
 		orderService.addOrderDTO(orderDTO);
 		
-		//orderProductDTO는.. 어떻게 추가해야 할지 일단 고민
+		//1. cartmapper에 findCartDTOByUserID 이용해 cart_id 뽑아
+		CartDTO cartDTO = cartService.findCartDTOByUserId(loginUserDTO.getUser_idx());
 		
-		if(model.getAttribute("cartProductList") == null) {
-			System.out.println("null");
-		}
+		//2. cartProductMapper 의 cart_id 이용해 check 된거만 뽑아 
+		List<CartProductDTO> cartProductList = cartProductService.findProductListByCartIdWithChecked(cartDTO.getCart_id());
 
+		//3. orderProductDTO 추가
+		for(CartProductDTO cartProductDTO : cartProductList) {
+			OrderProductDTO orderProductDTO = new OrderProductDTO();
+			
+			orderProductDTO.setOrder_id(order_id);
+			orderProductDTO.setPr_id(cartProductDTO.getPr_id());
+			orderProductDTO.setPr_amount(cartProductDTO.getPr_amount());
+			orderProductDTO.setPr_color(cartProductDTO.getPr_color());
+			orderProductDTO.setPr_size(cartProductDTO.getPr_size());
+			
+			orderProductService.addOrderProductDTO(orderProductDTO);
+			
+			//주문 후 장바구니에서 삭제
+			cartProductService.deleteCartProduct(cartProductDTO.getCart_pr_id());
+		}
 		
 		return "order/order_success";
 	}

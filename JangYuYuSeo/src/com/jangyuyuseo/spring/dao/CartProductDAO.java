@@ -24,7 +24,6 @@ public class CartProductDAO {
 	}
 	public CartProductDTO findCartProductDTO(int cart_id, int pr_id, String pr_color, String pr_size) {
 		CartProductDTO productDTO = cartProductMapper.findCartProductDTO(cart_id, pr_id, pr_color,  pr_size);
-		productDTO.set_checked(false);
 		return productDTO;
 	}
 	public List<CartProductDTO> findProductListByCartId(int cart_id) {
@@ -32,13 +31,11 @@ public class CartProductDAO {
 		int len = result.size();
 		for(int i=0;i<len;i++) {
 			result.get(i).setTotal_price(result.get(i).getPr_amount()*result.get(i).getPr_price());
-			result.get(i).set_checked(false);
 		}
 		return result;
 	}
 	public CartProductDTO findProductByCartPrId(int cart_pr_id) {
 		CartProductDTO result = cartProductMapper.findProductByCartPrId(cart_pr_id);
-		result.set_checked(false);
 		result.setTotal_price(result.getPr_amount()*result.getPr_price());
 		return result;
 	}
@@ -53,5 +50,9 @@ public class CartProductDAO {
 	}
 	public void setCheckedTrue(int cart_pr_id) {
 		cartProductMapper.setCheckedTrue(cart_pr_id);
+	}
+	
+	public List<CartProductDTO> findProductListByCartIdWithChecked(int cart_id){
+		return cartProductMapper.findProductListByCartIdWithChecked(cart_id);
 	}
 }

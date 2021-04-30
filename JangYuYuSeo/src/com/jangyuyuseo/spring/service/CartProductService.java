@@ -52,4 +52,7 @@ public class CartProductService {
 		cartProductDAO.setCheckedTrue(cart_pr_id);
 	}
 	
+	public List<CartProductDTO> findProductListByCartIdWithChecked(int cart_id){
+		return cartProductDAO.findProductListByCartIdWithChecked(cart_id);
+	}
 }
