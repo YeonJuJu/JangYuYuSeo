@@ -10,4 +10,5 @@ public class OrderProductDTO {
 	private int pr_amount;
 	private String pr_color;
 	private String pr_size;
+	private int pr_total_price;
 }

@@ -69,6 +69,7 @@ public class OrderController {
 			orderProductDTO.setPr_amount(cartProductDTO.getPr_amount());
 			orderProductDTO.setPr_color(cartProductDTO.getPr_color());
 			orderProductDTO.setPr_size(cartProductDTO.getPr_size());
+			orderProductDTO.setPr_total_price(cartProductDTO.getTotal_price());
 			
 			orderProductService.addOrderProductDTO(orderProductDTO);
 			
