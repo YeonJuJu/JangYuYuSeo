@@ -30,11 +30,9 @@
 	<div class="album py-5 bg-light" style="margin-top: 130px">
 		<div class="container" >
 			<h1>Best!</h1>
-			<div class="row"></div>
-		</div>
-		<div class="container">
+			<div class="row">
 			<c:forEach var="product" items="${bestProductList}">
-				<div class="col-md-4" style="display: inline-block">
+				<div class="col-md-4">
 					<div class="card mb-4 box-shadow">
 						<a href="${root}product/display?product_id=${product.pr_id}"> 
 							<img class="card-img-top" style="height: 225px; width: 100%; display: block;"
@@ -54,38 +52,36 @@
 					</div>
 				</div>
 			</c:forEach>
+			</div>
+		</div>
+		<div class="container">
+			<h1>New!</h1>
+			<div class="row">
+			<c:forEach var="product" items="${newProductList}">
+				<div class="col-md-4">
+					<div class="card mb-4 box-shadow">
+						<a href="${root}product/display?product_id=${product.pr_id}"> 
+							<img class="card-img-top" style="height: 225px; width: 100%; display: block;"
+							src="${pageContext.request.contextPath}/${product.pr_image}"
+							data-holder-rendered="true">
+						</a>
+						<div class="card-body">
+							<h3>${product.pr_name}</h3>
+							<p class="card-text">${product.pr_description}</p>
+							<p class="card-text">
+								<fmt:formatNumber value="${product.pr_price}" pattern="#,###,###" /> ₩
+							</p>
+							<div class="d-flex justify-content-between align-items-center">
+								<small class="text-muted">${product.pr_size}&nbsp;&nbsp;${product.pr_color}</small>
+							</div>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+			</div>
 		</div>
 	</div>
 
-	<div class="album py-5 bg-light" style="margin-top: 130px">
-		<div class="container">
-			<h1>New!</h1>
-			<div class="row"></div>
-		</div>
-		<div class="container">
-			<c:forEach var="product" items="${newProductList}">
-				<div class="col-md-4" style="display: inline-block">
-					<div class="card mb-4 box-shadow">
-						<a href="${root}product/display?product_id=${product.pr_id}"> 
-							<img class="card-img-top" style="height: 225px; width: 100%; display: block;"
-							src="${pageContext.request.contextPath}/${product.pr_image}"
-							data-holder-rendered="true">
-						</a>
-						<div class="card-body">
-							<h3>${product.pr_name}</h3>
-							<p class="card-text">${product.pr_description}</p>
-							<p class="card-text">
-								<fmt:formatNumber value="${product.pr_price}" pattern="#,###,###" /> ₩
-							</p>
-							<div class="d-flex justify-content-between align-items-center">
-								<small class="text-muted">${product.pr_size}&nbsp;&nbsp;${product.pr_color}</small>
-							</div>
-						</div>
-					</div>
-				</div>
-			</c:forEach>
-		</div>
-	</div>
 
 	<!-- 하단 정보 -->
      <c:import url="/WEB-INF/view/include/bottom_info.jsp"/>

@@ -33,16 +33,10 @@
 	<div class="album py-5 bg-light" style="margin-top: 130px">
 		<div class="container">
 			<h1>검색결과</h1>
-			<div class="row"></div>
-		</div>
-		<div class="container">
-			<small>총 ${size} 개의 상품이 검색되었습니다.</small>
-			<div class="row"></div>
-			<br/>
-		</div>
-		<div class="container">
+			<small>총 ${size} 개의 상품이 검색되었습니다.<br/><br/></small>
+			<div class="row">
 			<c:forEach var="product" items="${productList}">
-				<div class="col-md-4" style="display: inline-block">
+				<div class="col-md-4">
 					<div class="card mb-4 box-shadow">
 						<a href="${root}product/display?product_id=${product.pr_id}"> <img class="card-img-top"
 							style="height: 225px; width: 100%; display: block;"
@@ -64,8 +58,14 @@
 					</div>
 				</div>
 			</c:forEach>
+			</div>
 		</div>
+		
 	</div>
+	
+	
+	
+
 
 	<!-- 하단 정보 -->
 	<c:import url="/WEB-INF/view/include/bottom_info.jsp" />
