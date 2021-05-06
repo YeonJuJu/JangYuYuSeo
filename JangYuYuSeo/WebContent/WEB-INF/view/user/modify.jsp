@@ -18,34 +18,34 @@
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 	<!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="${root}images/icons/favicon.ico" />
+	<link rel="icon" type="image/png" href="${root}resources/images/icons/favicon.ico" />
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css"
-		href="${root}vendor/bootstrap/css/bootstrap.min.css">
+		href="${root}resources/vendor/bootstrap/css/bootstrap.min.css">
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css"
-		href="${root}fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+		href="${root}resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css"
-		href="${root}fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+		href="${root}resources/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css"
-		href="${root}vendor/animate/animate.css">
+		href="${root}resources/vendor/animate/animate.css">
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css"
-		href="${root}vendor/css-hamburgers/hamburgers.min.css">
+		href="${root}resources/vendor/css-hamburgers/hamburgers.min.css">
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css"
-		href="${root}vendor/animsition/css/animsition.min.css">
+		href="${root}resources/vendor/animsition/css/animsition.min.css">
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css"
-		href="${root}vendor/select2/select2.min.css">
+		href="${root}resources/vendor/select2/select2.min.css">
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css"
-		href="${root}vendor/daterangepicker/daterangepicker.css">
+		href="${root}resources/vendor/daterangepicker/daterangepicker.css">
 	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="${root}css/util.css">
-	<link rel="stylesheet" type="text/css" href="${root}css/main.css?after">
+	<link rel="stylesheet" type="text/css" href="${root}resources/css/util.css">
+	<link rel="stylesheet" type="text/css" href="${root}resources/css/main.css?after">
 	<!--===============================================================================================-->
 </head>
 <body>
@@ -58,7 +58,7 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-form-title"
-					style="background-image: url(${root}images/bg-02.jpg);">
+					style="background-image: url(${root}resources/images/bg-02.jpg);">
 					<span class="login100-form-title-1"> Modify Information </span>
 				</div>
 
@@ -108,19 +108,19 @@
 	</div>
 
 	<!--===============================================================================================-->
-	<script src="${root}vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="${root}resources/vendor/jquery/jquery-3.2.1.min.js"></script>
 	<!--===============================================================================================-->
-	<script src="${root}vendor/animsition/js/animsition.min.js"></script>
+	<script src="${root}resources/vendor/animsition/js/animsition.min.js"></script>
 	<!--===============================================================================================-->
-	<script src="${root}vendor/bootstrap/js/popper.js"></script>
-	<script src="${root}vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="${root}resources/vendor/bootstrap/js/popper.js"></script>
+	<script src="${root}resources/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<!--===============================================================================================-->
-	<script src="${root}vendor/select2/select2.min.js"></script>
+	<script src="${root}resources/vendor/select2/select2.min.js"></script>
 	<!--===============================================================================================-->
-	<script src="${root}vendor/daterangepicker/moment.min.js"></script>
-	<script src="${root}vendor/daterangepicker/daterangepicker.js"></script>
+	<script src="${root}resources/vendor/daterangepicker/moment.min.js"></script>
+	<script src="${root}resources/vendor/daterangepicker/daterangepicker.js"></script>
 	<!--===============================================================================================-->
-	<script src="${root}vendor/countdowntime/countdowntime.js"></script>
+	<script src="${root}resources/vendor/countdowntime/countdowntime.js"></script>
 	<!--===============================================================================================-->
 	<script src="js/main.js"></script>
 

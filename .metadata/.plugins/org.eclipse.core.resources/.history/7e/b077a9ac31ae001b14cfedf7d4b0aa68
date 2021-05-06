@@ -20,7 +20,7 @@
 	rel='stylesheet' type='text/css'>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="${root}resources/css02/style.css">
+<link rel="stylesheet" href="${root}css02/style.css">
 <script type="text/javascript">
 	function update_amount(id) {
 		const result = document.getElementById("count" + id.toString());
@@ -179,10 +179,10 @@
 		</div>
 	</section>
 
-	<script src="${root}resources/js02/jquery.min.js"></script>
-	<script src="${root}resources/js02/popper.js"></script>
-	<script src="${root}resources/js02/bootstrap.min.js"></script>
-	<script src="${root}resources/js02/main.js"></script>
+	<script src="${root}js02/jquery.min.js"></script>
+	<script src="${root}js02/popper.js"></script>
+	<script src="${root}js02/bootstrap.min.js"></script>
+	<script src="${root}js02/main.js"></script>
 
 	<!-- 하단 정보 -->
 	<c:import url="/WEB-INF/view/include/bottom_info.jsp" />
