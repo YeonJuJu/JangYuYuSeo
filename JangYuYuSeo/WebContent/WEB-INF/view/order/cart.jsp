@@ -106,7 +106,7 @@
 							</thead>
 							
 							<tbody>
-								<form:form id="check" method="get" action="${root}cart/orderform">
+								<form id="check" method="get" action="${root}cart/orderform">
 									<c:forEach var="product" items="${cartProductList}">
 										<tr class="alert" role="alert">
 											<td>
@@ -162,16 +162,18 @@
 												pattern="#,###,###" />
 										</td>
 									</tr>
-								</form:form>
 							</tbody>
 						</table>
-					</div>
-					
-					<br>
+						<br>
 					
 					<div>
 						<button style="background: #99b19c; color: #fff; border: none; padding: 0 2em; cursor: pointer; float: right;">Order</button>
 					</div>
+					
+					</form>
+					</div>
+					
+
 				</div>
 			</div>
 		</div>
