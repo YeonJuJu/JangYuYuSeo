@@ -34,6 +34,9 @@ public class ProductService {
 		return productDAO.selectProductById(pr_id);
 	}
 
+	public List<ProductDTO> selectKeywordProduct(String keyword) throws Exception {
+		return productDAO.selectKeywordProduct(keyword);
+	}
 	public void deleteProduct(int pr_id) {
 		productDAO.deleteProduct(pr_id);
 	}

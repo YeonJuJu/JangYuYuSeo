@@ -12,10 +12,19 @@
 			<c:forEach var="categoryDTO" items="${categoryList}">
 					<a class="p-2 text-muted" href="${root }product/list?category_idx=${categoryDTO.category_idx}">${categoryDTO.category_name}</a>
 			</c:forEach>
-			
+				<script type="text/javascript">
+					function search() {
+						var keyword = document.getElementById('keyword').value;
+						if(keyword.length==0) {
+							alert("검색할 단어를 입력해 주세요.");
+							return;
+						}
+						location.href = "/JangYuYuSeo/product/search?keyword="+keyword;
+				}
+			</script>
 			<form class="form-inline ml-auto" style="margin-right:0px">
-			    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-			    <button class="btn btn-sm btn-outline-secondary" type="button">Search</button>
+			    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="keyword">
+			    <button class="btn btn-sm btn-outline-secondary" type="button" onClick='search()'>Search</button>
 			</form>
 		</nav>
 		

@@ -24,6 +24,9 @@ public interface ProductMapper {
 	
 	@Select("select * from product_table where pr_id=#{pr_id}")
 	public ProductDTO selectProductById(int pr_id);
+	
+	@Select("select * from product_table where pr_name like '%'||#{keyword}||'%'")
+	public List<ProductDTO> selectKeywordProduct(String keyword);
 
 	@Delete("delete from product_table where pr_id = #{pr_id}")
 	public void deleteProduct(int pr_id);
