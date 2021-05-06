@@ -16,7 +16,7 @@
     
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="${root}resources/css02/style.css">
+	<link rel="stylesheet" href="${root}css02/style.css">
 </head>
 <body>
     <!-- 상단 메뉴 -->
@@ -56,7 +56,7 @@
 									</td>
 									
 									<td>
-										<div class="img" style="background-image: url(${root}resources/images02/profile.png);"></div>
+										<div class="img" style="background-image: url(${root}images02/profile.png);"></div>
 									</td>
 									
 									<td>
@@ -109,7 +109,7 @@
 										
 										<td>
 											<div class="img"
-												style="background-image: url(${root}resources/images02/cart.png); width:60px; height:60px;"></div>
+												style="background-image: url(${root}images02/cart.png); width:60px; height:60px;"></div>
 										</td>
 										
 										<td>
@@ -132,10 +132,10 @@
 		</div>
 	</section>
 	
-	<script src="${root}resources/js02/jquery.min.js"></script>
-	<script src="${root}resources/js02/popper.js"></script>
-	<script src="${root}resources/js02/bootstrap.min.js"></script>
-	<script src="${root}resources/js02/main.js"></script>
+	<script src="${root}js02/jquery.min.js"></script>
+	<script src="${root}js02/popper.js"></script>
+	<script src="${root}js02/bootstrap.min.js"></script>
+	<script src="${root}js02/main.js"></script>
 	
 	<!-- 하단 정보 -->
 	<c:import url="/WEB-INF/view/include/bottom_info.jsp" />
