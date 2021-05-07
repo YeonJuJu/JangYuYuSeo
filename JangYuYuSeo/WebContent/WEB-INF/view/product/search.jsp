@@ -20,6 +20,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
@@ -31,7 +32,8 @@
 	<!-- 메인 게시판 부분 -->
 	<div class="album py-5 bg-light" style="margin-top: 130px">
 		<div class="container">
-			<h1>${category}</h1>
+			<h1>검색결과</h1>
+			<small>총 ${size} 개의 상품이 검색되었습니다.<br/><br/></small>
 			<div class="row">
 			<c:forEach var="product" items="${productList}">
 				<div class="col-md-4">
@@ -60,6 +62,10 @@
 		</div>
 		
 	</div>
+	
+	
+	
+
 
 	<!-- 하단 정보 -->
 	<c:import url="/WEB-INF/view/include/bottom_info.jsp" />

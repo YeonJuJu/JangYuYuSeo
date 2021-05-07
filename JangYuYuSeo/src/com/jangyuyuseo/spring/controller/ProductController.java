@@ -85,6 +85,14 @@ public class ProductController {
 		return "product/register";
 	}
 	
+	@GetMapping("/search")
+	public String productSearch(@RequestParam("keyword")String keyword, Model model) throws Exception {
+		List<ProductDTO> productList = productService.selectKeywordProduct(keyword);
+		model.addAttribute("productList",productList);
+		model.addAttribute("size",productList.size());
+		return "product/search";
+	}
+	
 	@RequestMapping("/productDelete")
 	public String productDeleteProc(@RequestParam("product_id")int pr_id, Model model) throws Exception {
 		productService.deleteProduct(pr_id);

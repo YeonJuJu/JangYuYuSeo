@@ -38,6 +38,10 @@ public class ProductDAO {
 	public ProductDTO selectProductById(int pr_id) {
 		return productMapper.selectProductById(pr_id);
 	}
+	
+	public List<ProductDTO> selectKeywordProduct(String keyword) throws Exception {
+		return productMapper.selectKeywordProduct(keyword);
+	}
 
 	public void deleteProduct(int pr_id) {
 		productMapper.deleteProduct(pr_id);
