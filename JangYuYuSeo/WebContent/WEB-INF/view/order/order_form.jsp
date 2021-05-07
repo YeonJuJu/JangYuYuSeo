@@ -128,21 +128,21 @@
 							<div class="wrap-input100 validate-input"
 								data-validate="Name is required">
 								<span class="label">Name</span> 
-								<input name="order_name" class="input100" placeholder="Enter name" /> 
+								<input name="order_name" class="input100" value="${userInfo.user_name}" /> 
 								<span class="focus-input100"></span>
 							</div>
 	
 							<div class="wrap-input100 validate-input"
 								data-validate="Address is required">
 								<span class="label">Address</span> 
-								<input name="order_address" class="input100" placeholder="Enter address" /> 
+								<input name="order_address" class="input100" value="${userInfo.user_address}" /> 
 									<span class="focus-input100"></span>
 							</div>
 	
 							<div class="wrap-input100 validate-input"
 								data-validate="Password is required">
 								<span class="label">Phone</span> 
-								<input name="order_phone" class="input100" placeholder="Enter phone number" /> 
+								<input name="order_phone" class="input100" value="${userInfo.user_phone}" /> 
 								<span class="focus-input100"></span>
 							</div>
 	

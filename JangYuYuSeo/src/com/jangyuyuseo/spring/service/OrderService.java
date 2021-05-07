@@ -25,4 +25,8 @@ public class OrderService {
 	public List<OrderDTO> getOrderListByUserIdx(int order_user_idx){
 		return orderDAO.getOrderListByUserIdx(order_user_idx);
 	}
+	
+	public List<OrderDTO> getOrderList() {
+		return orderDAO.getOrderList();
+	}
 }

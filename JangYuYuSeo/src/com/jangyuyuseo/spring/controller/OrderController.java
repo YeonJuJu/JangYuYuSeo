@@ -8,14 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jangyuyuseo.spring.dto.CartDTO;
 import com.jangyuyuseo.spring.dto.CartProductDTO;
 import com.jangyuyuseo.spring.dto.OrderDTO;
 import com.jangyuyuseo.spring.dto.OrderProductDTO;
+import com.jangyuyuseo.spring.dto.ProductDTO;
 import com.jangyuyuseo.spring.dto.UserDTO;
 import com.jangyuyuseo.spring.service.CartProductService;
 import com.jangyuyuseo.spring.service.CartService;
@@ -41,6 +44,15 @@ public class OrderController {
 	@Autowired
 	private CartProductService cartProductService;
 	
+	@GetMapping("/order_list")
+	public String orderList(Model model) throws Exception {
+		List<OrderDTO> orderList = orderService.getOrderList();
+		List<OrderProductDTO> productList = orderProductService.getAllOrderProductList();
+		model.addAttribute("orderList",orderList);
+		model.addAttribute("productList",productList);
+		return "order/order_list";
+	}
+	
 	@PostMapping("/order_proc")
 	public String orderProc(@ModelAttribute("orderDTO") OrderDTO orderDTO, Model model, BindingResult result) {
 		
@@ -63,7 +75,6 @@ public class OrderController {
 		//3. orderProductDTO 추가
 		for(CartProductDTO cartProductDTO : cartProductList) {
 			OrderProductDTO orderProductDTO = new OrderProductDTO();
-			
 			orderProductDTO.setOrder_id(order_id);
 			orderProductDTO.setPr_id(cartProductDTO.getPr_id());
 			orderProductDTO.setPr_amount(cartProductDTO.getPr_amount());

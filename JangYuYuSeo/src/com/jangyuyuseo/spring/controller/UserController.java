@@ -1,5 +1,6 @@
 package com.jangyuyuseo.spring.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -18,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jangyuyuseo.spring.dto.OrderDTO;
+import com.jangyuyuseo.spring.dto.OrderProductDTO;
 import com.jangyuyuseo.spring.dto.UserDTO;
+import com.jangyuyuseo.spring.service.OrderProductService;
 import com.jangyuyuseo.spring.service.OrderService;
 import com.jangyuyuseo.spring.service.UserService;
 import com.jangyuyuseo.spring.validator.UserValidator;
@@ -31,6 +34,9 @@ public class UserController {
 	
 	@Autowired
 	private OrderService orderService;
+	
+	@Autowired
+	private OrderProductService orderProductService;
 	
 	@Resource(name="loginUserDTO")
 	private UserDTO loginUserDTO;
@@ -87,7 +93,16 @@ public class UserController {
 		model.addAttribute("loginUserDTO", loginUserDTO);
 
 		List<OrderDTO> orderDTOList = orderService.getOrderListByUserIdx(loginUserDTO.getUser_idx());
+		List<OrderProductDTO> orderProductList = new ArrayList<OrderProductDTO>();
+		int len = orderDTOList.size();
+		for(int i=0;i<len;i++) {
+			int orderId = orderDTOList.get(i).getOrder_id();
+			List<OrderProductDTO> tmp = orderProductService.getOrderProductListByOrderId(orderId);
+			if(tmp!=null)
+				orderProductList.addAll(tmp);
+		}
 		model.addAttribute("orderDTOList", orderDTOList);
+		model.addAttribute("orderProductList",orderProductList);
 		
 		return "/user/myPage";
 	}

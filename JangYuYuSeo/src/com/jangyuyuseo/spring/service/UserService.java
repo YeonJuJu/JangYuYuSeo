@@ -39,6 +39,7 @@ public class UserService {
 			loginUserDTO.setUser_idx(fromDBUserDTO.getUser_idx());
 			loginUserDTO.setUser_name(fromDBUserDTO.getUser_name());
 			loginUserDTO.setUser_address(fromDBUserDTO.getUser_address());
+			loginUserDTO.setUser_phone(fromDBUserDTO.getUser_phone());
 			loginUserDTO.setUser_signupdate(fromDBUserDTO.getUser_signupdate());
 			loginUserDTO.setUserLogin(true);
 		}

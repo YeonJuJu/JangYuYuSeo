@@ -19,7 +19,6 @@ public class CartProductDAO {
 	}
 	public void updateCartProductAmount(int amount,int cart_pr_id) {
 		CartProductDTO cartProductDTO = cartProductMapper.findProductByCartPrId(cart_pr_id);
-		cartProductDTO.setTotal_price(amount*cartProductDTO.getPr_price());
 		cartProductMapper.updateCartProductAmount(amount,cart_pr_id);
 	}
 	public CartProductDTO findCartProductDTO(int cart_id, int pr_id, String pr_color, String pr_size) {
@@ -53,6 +52,11 @@ public class CartProductDAO {
 	}
 	
 	public List<CartProductDTO> findProductListByCartIdWithChecked(int cart_id){
-		return cartProductMapper.findProductListByCartIdWithChecked(cart_id);
+		List<CartProductDTO> result = cartProductMapper.findProductListByCartIdWithChecked(cart_id);
+		int len = result.size();
+		for(int i=0;i<len;i++) {
+			result.get(i).setTotal_price(result.get(i).getPr_amount()*result.get(i).getPr_price());
+		}
+		return result;
 	}
 }

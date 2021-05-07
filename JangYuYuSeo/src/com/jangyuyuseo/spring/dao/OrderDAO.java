@@ -25,4 +25,9 @@ public class OrderDAO {
 	public List<OrderDTO> getOrderListByUserIdx(int order_user_idx){
 		return orderMapper.getOrderListByUserIdx(order_user_idx);
 	}
+	
+
+	public List<OrderDTO> getOrderList() {
+		return orderMapper.getOrderList();
+	}
 }
