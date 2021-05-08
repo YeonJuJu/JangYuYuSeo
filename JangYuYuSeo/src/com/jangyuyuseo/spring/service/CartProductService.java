@@ -25,12 +25,12 @@ public class CartProductService {
 			//새로추가 
 			cartProductDTO.setPr_amount(1);
 			cartProductDTO.setTotal_price(cartProductDTO.getPr_price());
-			cartProductDTO.set_checked(false);
 			cartProductDAO.addCartProduct(cartProductDTO);
 		}
-		//있으면 수량만 ++
+		//있으면 수량 ++, checked true로 set
 		else {
 			cartProductDAO.updateCartProductAmount(preCartProductDTO.getPr_amount()+1,preCartProductDTO.getCart_pr_id());
+			cartProductDAO.setCheckedTrue(preCartProductDTO.getCart_pr_id());
 		}
 		return cartProductDAO.findCartProductDTO(cartId, cartProductDTO.getPr_id(),cartProductDTO.getPr_color(),cartProductDTO.getPr_size()).getCart_pr_id();
 	}

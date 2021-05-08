@@ -1,5 +1,7 @@
 package com.jangyuyuseo.spring.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,5 +15,13 @@ public class OrderProductService {
 	
 	public void addOrderProductDTO(OrderProductDTO orderProductDTO) {
 		orderProductDAO.addOrderProductDTO(orderProductDTO);
+	}
+	
+	public List<OrderProductDTO> getAllOrderProductList() {
+		return orderProductDAO.getAllOrderProductList();
+	}
+	
+	public List<OrderProductDTO> getOrderProductListByOrderId(int order_id) {
+		return orderProductDAO.getOrderProductListByOrderId(order_id);
 	}
 }

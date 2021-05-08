@@ -15,11 +15,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JangYuYuSeo</title>
     
+    
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="${root}resources/css02/style.css">
-	
-	 <!--===============================================================================================-->
+    <!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="${root}resources//images/icons/favicon.ico" />
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="${root}resources/vendor/bootstrap/css/bootstrap.min.css">
@@ -41,63 +41,20 @@
 	<link rel="stylesheet" type="text/css" href="${root}resources/css/util.css">
 	<link rel="stylesheet" type="text/css" href="${root}resources/css/main.css?after">
 	<!--===============================================================================================-->
+
 </head>
 <body>
     <!-- 상단 메뉴 -->
 	<c:import url="/WEB-INF/view/include/top_menu.jsp" />
 	<c:import url="/WEB-INF/view/include/category_menu.jsp" />
-	
-	<section class="ftco-section">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-md-6 text-center mb-4">
-					<h2 class="heading-section">My Page</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<h3 class="h5 mb-4 text-left">Profile</h3>
-					<div class="table-wrap">
-						<table class="table">
-							<thead class="thead-primary">
-								<tr>
-									<th>&nbsp;</th>
-									<th style="font-weight:bold; font-size:1em">Name</th>
-									<th>&nbsp;</th>
-									<th style="font-weight:bold; font-size:1em">Address</th>
-									<th>&nbsp;</th>
-									<th>&nbsp;</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr class="alert" role="alert">
-									<td>
-										<div class="img" style="background-image: url(${root}resources/images02/profile.png);"></div>
-									</td>
-									
-									<td>
-										<div class="email">
-											<span style="font-weight:bold; font-size:1em">${loginUserDTO.user_name } </span> 
-											<span style="font-weight:bold">가입일 : ${loginUserDTO.user_signupdate }</span>
-										</div>
-									</td>
-									
-									<td></td>
-									
-									<td style="font-weight:bold">${loginUserDTO.user_address } </td>
-									
-									<td>
-										<a href="${root}user/before_modify" style="font-weight:bold; font-size:1em">edit</a>
-									</td>
-									
-								</tr>
-							</tbody>
-						</table>
+
+		<section class="ftco-section">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-md-6 text-center mb-4">
+						<h2 class="heading-section">Order List</h2>
 					</div>
 				</div>
-			</div>
-			
-			<br>
 			<div class="row">
 				<div class="col-md-12">
 					<h3 class="h5 mb-4 text-left">Order-List</h3>
@@ -115,7 +72,7 @@
 								</thead>
 								<tbody>
 		
-									<c:forEach var="order" items="${orderDTOList}">
+									<c:forEach var="order" items="${orderList}">
 										<tr>
 										<td><div class="clickable" style="cursor:pointer" data-toggle="collapse" data-target="#accordion${order.order_id}" > > </div></td>
 										<td>${order.order_name}</td>
@@ -124,12 +81,10 @@
 										<td>${order.order_message}</td>
 										<td>${order.order_date}</td>
 										</tr>
-										<c:forEach var="product" items="${orderProductList}">
+										<c:forEach var="product" items="${productList}">
 											<c:if test="${product.order_id eq order.order_id}">
 												<tr class="collapse" id="accordion${product.order_id}">
-													<td style="background-color: rgb(248,249,253)">
-														<div class="img" style="background-image: url(${pageContext.request.contextPath}/resources/${product.pr_image});"></div>
-													</td>
+													<td style="background-color: rgb(248,249,253)"></td>
 													<td style="background-color: rgb(248,249,253)">${product.pr_name}</td>
 													<td style="background-color: rgb(248,249,253)">${product.pr_color}</td>
 													<td style="background-color: rgb(248,249,253)">${product.pr_size}</td>
@@ -145,14 +100,14 @@
 						</div>
 					</div>
 				</div>
-		</div>
-	</section>
+			</div>
+		</section>
 	
 	<script src="${root}resources/js02/jquery.min.js"></script>
 	<script src="${root}resources/js02/popper.js"></script>
 	<script src="${root}resources/js02/bootstrap.min.js"></script>
 	<script src="${root}resources/js02/main.js"></script>
-	
+
 	<!-- 하단 정보 -->
 	<c:import url="/WEB-INF/view/include/bottom_info.jsp" />
 </body>

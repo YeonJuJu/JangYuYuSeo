@@ -38,7 +38,7 @@
 					<div class="card mb-4 box-shadow">
 						<a href="${root}product/display?product_id=${product.pr_id}"> <img class="card-img-top"
 							style="height: 225px; width: 100%; display: block;"
-							src="${pageContext.request.contextPath}/${product.pr_image}"
+							src="${pageContext.request.contextPath}/resources/${product.pr_image}"
 							data-holder-rendered="true">
 						</a>
 						<div class="card-body">

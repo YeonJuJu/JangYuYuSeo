@@ -187,7 +187,7 @@ public class ServletAppContext implements WebMvcConfigurer {
 	  	InterceptorRegistration reg2 = registry.addInterceptor(checkAdminInterceptor);
 	  	
 	  	reg1.addPathPatterns("/**");
-	  	reg2.addPathPatterns("/product/manage", "/product/modify", "/product/register");
+	  	reg2.addPathPatterns("/product/manage", "/product/modify", "/product/register","/order/order_list");
 	  	
 	}
 	

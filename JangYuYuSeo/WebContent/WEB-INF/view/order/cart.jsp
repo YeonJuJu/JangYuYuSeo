@@ -117,7 +117,7 @@
 											</td>
 											
 											<td>
-												<div class="img" style="background-image: url(${pageContext.request.contextPath}/${product.pr_image});"></div>
+												<div class="img" style="background-image: url(${pageContext.request.contextPath}/resources/${product.pr_image});"></div>
 											</td>
 											
 											<td>

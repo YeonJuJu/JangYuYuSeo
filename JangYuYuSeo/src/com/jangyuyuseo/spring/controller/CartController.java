@@ -25,6 +25,7 @@ import com.jangyuyuseo.spring.dto.UserDTO;
 import com.jangyuyuseo.spring.service.CartProductService;
 import com.jangyuyuseo.spring.service.CartService;
 import com.jangyuyuseo.spring.service.ProductService;
+import com.jangyuyuseo.spring.service.UserService;
 
 @Controller
 @RequestMapping("/cart")
@@ -70,7 +71,7 @@ public class CartController {
 			cartId = cartService.findCartDTOByUserId(userIdx).getCart_id();
 			cartProductList = cartProductService.findProductListByCartId(cartId);
 			int len = cartProductList.size();
-			for(int i=0;i<len;i++)
+			for(int i=0;i<len;i++) 
 				total+=cartProductList.get(i).getTotal_price();
 		}
 		model.addAttribute("total",total);
@@ -101,11 +102,12 @@ public class CartController {
 			Model model) {
 		if(loginUserDTO.isUserLogin() == true) {
 			List<CartProductDTO> cartProductList = new ArrayList<CartProductDTO>();
+			//장바구니 아이디 가져오고 check일단 false로 세팅
+			int userIdx = loginUserDTO.getUser_idx();
+			int cartId = cartService.findCartDTOByUserId(userIdx).getCart_id();
+			cartProductService.initCartCheckedFalse(cartId);
 			//장바구니에서 넘어온 경우
 			if(pr_id == -1) {
-				int userIdx = loginUserDTO.getUser_idx();
-				int cartId = cartService.findCartDTOByUserId(userIdx).getCart_id();
-				cartProductService.initCartCheckedFalse(cartId);
 				//체크박스에서 체크된 cart_pr_id 가져오기
 				String[] checkProductList = request.getParameterValues("checkProduct");
 				if(checkProductList==null)
@@ -118,14 +120,6 @@ public class CartController {
 					cartProductService.setCheckedTrue(tmpCartPrId);
 					cartProductList.add(tmp);
 				}
-				//체크 잘 설정돼서 넘어가는지 확인하려고 썼던 코드..
-				/*
-				List<CartProductDTO> tmplist = cartProductService.findProductListByCartId(cartId);
-				for(int i=0;i<tmplist.size();i++) {
-					System.out.println(tmplist.get(i).getPr_name()+" : "+tmplist.get(i).is_checked());
-				}
-				System.out.println();
-				*/
 			}
 			//주문하기로 넘어온 경우 
 			else {
@@ -139,6 +133,7 @@ public class CartController {
 				total+=cartProductList.get(i).getTotal_price();
 			model.addAttribute("total",total);
 			model.addAttribute("cartProductList", cartProductList);
+			model.addAttribute("userInfo", loginUserDTO);
 			return "order/order_form";
 		} else {
 			return "user/login";

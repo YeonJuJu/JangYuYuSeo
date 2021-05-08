@@ -11,4 +11,6 @@ public class OrderProductDTO {
 	private String pr_color;
 	private String pr_size;
 	private int pr_total_price;
+	private String pr_name;
+	private String pr_image;
 }

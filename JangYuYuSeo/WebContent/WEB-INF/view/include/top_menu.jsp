@@ -19,8 +19,11 @@
       <c:choose>
       	<c:when test="${loginUserDTO.isUserLogin()==true }">
       			<c:if test="${loginUserDTO.getUser_idx()=='0' }">
+      			<li class="nav-item">
+        				<a href="${root }order/order_list" class="nav-link">Order<span class="sr-only">(current)</span></a>
+      				</li>
       				<li class="nav-item">
-        				<a href="${root }product/manage" class="nav-link">Manage<span class="sr-only">(current)</span></a>
+        				<a href="${root }product/manage" class="nav-link">Product<span class="sr-only">(current)</span></a>
       				</li>
       			</c:if>
    
