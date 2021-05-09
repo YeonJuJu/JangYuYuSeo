@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
 import javax.validation.Valid;
 
 import org.apache.commons.io.FileUtils;
@@ -154,24 +155,25 @@ public class ProductController {
 	  	return "product/register_success";
 	  }
 	
-	@PostMapping(value="/uploadSummernoteImageFile", produces = "application/json")
+
+	@RequestMapping(value="/uploadSummernoteImageFile", produces = "application/json; charset=utf8")
 	@ResponseBody
-	public JsonObject uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request) {
-		
+	public String uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request )  {
 		JsonObject jsonObject = new JsonObject();
 		
-		String fileRoot = request.getSession().getServletContext().getRealPath("/")+"/resources";	//저장될 외부 파일 경로
+		String fileRoot = "C:\\Users\\uplay\\GitHub\\JangYuYuSeo\\JangYuYuSeo\\WebContent\\resources\\summernote_images\\";	//저장될 외부 파일 경로
+		
+		fileRoot = "C:\\Users\\uplay\\Github\\JangYuYuSeo\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\JangYuYuSeo\\resources\\summernote_images\\";
+		
 		String originalFileName = multipartFile.getOriginalFilename();	//오리지날 파일명
 		String extension = originalFileName.substring(originalFileName.lastIndexOf("."));	//파일 확장자
-				
 		String savedFileName = UUID.randomUUID() + extension;	//저장될 파일 명
 		
 		File targetFile = new File(fileRoot + savedFileName);	
-		
 		try {
 			InputStream fileStream = multipartFile.getInputStream();
 			FileUtils.copyInputStreamToFile(fileStream, targetFile);	//파일 저장
-			jsonObject.addProperty("url", savedFileName);
+			jsonObject.addProperty("url", "/resources/summernote_images/"+ savedFileName); // contextroot + resources + 저장할 내부 폴더명
 			jsonObject.addProperty("responseCode", "success");
 				
 		} catch (IOException e) {
@@ -179,7 +181,7 @@ public class ProductController {
 			jsonObject.addProperty("responseCode", "error");
 			e.printStackTrace();
 		}
-		
-		return jsonObject;
+		String a = jsonObject.toString();
+		return a;
 	}
 }

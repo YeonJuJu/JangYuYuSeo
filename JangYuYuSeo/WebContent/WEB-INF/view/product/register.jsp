@@ -4,6 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!-- 절대경로 설정 -->
 <c:url var="root" value="/" />
+<%-- <c:set var="path" value="${pageContext.request.contextPath}" /> --%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -66,6 +67,9 @@ $(document).ready(function() {
 			callbacks: {	//여기 부분이 이미지를 첨부하는 부분
 				onImageUpload : function(files) {
 					uploadSummernoteImageFile(files[0],this);
+					/* for (var i = files.length - 1; i >= 0; i--) {
+				            uploadSummernoteImageFile(files[i], this);
+					} */
 				},
 				onPaste: function (e) {
 					var clipboardData = e.originalEvent.clipboardData;
@@ -87,18 +91,12 @@ function uploadSummernoteImageFile(file, editor) {
 	$.ajax({
 		data : data,
 		type : "POST",
-		url : "/JangYuYuSeo/product/uploadSummernoteImageFile",
+		url : "uploadSummernoteImageFile",
 		contentType : false,
+		enctype : 'multipart/form-data',
 		processData : false,
 		success : function(data) {
-        	//항상 업로드된 파일의 url이 있어야 한다.
-        	/* path = ('http://localhost:8090/JangYuYuseo/WebContent/resources'+data.url); */
-        	/* path = ('file:///C:/Users/301-14/Documents/GitHub/JangYuYuSeo/JangYuYuSeo/WebContent/resources'+data.url); */
-        	/* path = ($(root)+'WebContent/resources'+data.url); */
-        	//path = ('/JangYuYuSeo/resources'+data.url);
-        	path='file:///C:/Users/301-14/Documents/GitHub/JangYuYuSeo/JangYuYuSeo/WebContent/resources/summernote_images/test.png';
-        	alert(path);
-			$(editor).summernote('insertImage', path);
+			$(editor).summernote('editor.insertImage', data.url);
 		}
 	});
 }
@@ -113,7 +111,7 @@ function uploadSummernoteImageFile(file, editor) {
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<div class="login100-form-title" style="background-image: url(${root}images/bg-02.jpg);">
+				<div class="login100-form-title" style="background-image: url(${root}resources/images/bg-02.jpg);">
 					<span class="login100-form-title-1">상품등록</span>
 				</div>
 		

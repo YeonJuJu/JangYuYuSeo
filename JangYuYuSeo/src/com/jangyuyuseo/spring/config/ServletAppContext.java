@@ -77,7 +77,6 @@ public class ServletAppContext implements WebMvcConfigurer {
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		WebMvcConfigurer.super.addResourceHandlers(registry);
-		//registry.addResourceHandler("/summernoteImage/**").addResourceLocations("file:///C:/Users/301-14/Documents/GitHub/JangYuYuSeo/JangYuYuSeo/WebContent/resources/summernote_images/");
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
 
@@ -210,13 +209,15 @@ public class ServletAppContext implements WebMvcConfigurer {
 		return res;
 	}
 	
+	private final int MAX_SIZE = 10 * 1024 * 1024;
 	
 	@Bean
     public MultipartResolver multipartResolver() {
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
         multipartResolver.setMaxUploadSize(2000000000);
-        return multipartResolver;
+	    multipartResolver.setMaxUploadSizePerFile(2000000000);
+	    multipartResolver.setMaxInMemorySize(0);
+	    return multipartResolver;
     }
-
 	
 }
