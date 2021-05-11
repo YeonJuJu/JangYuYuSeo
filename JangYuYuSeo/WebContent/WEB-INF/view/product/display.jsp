@@ -77,7 +77,9 @@
 						<div class="col-4">
 							<img class="card-img-top"
 								style="height: 300px; width: 100%; display: block;"
+
 								src="${pageContext.request.contextPath}/resources${productDTO.pr_image}"
+
 								data-holder-rendered="true">
 						</div>
 						<div class="col-8">
@@ -113,8 +115,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="container">
-				<h5>${productDTO.pr_detail}</h5>
+			<div class="container style="display:table-cell;vertical-align:middle">
+				${productDTO.pr_detail}
 			</div>
 
 		</div>

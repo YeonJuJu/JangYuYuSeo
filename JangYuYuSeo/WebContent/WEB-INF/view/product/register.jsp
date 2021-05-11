@@ -96,7 +96,7 @@ function uploadSummernoteImageFile(file, editor) {
 		enctype : 'multipart/form-data',
 		processData : false,
 		success : function(data) {
-			$(editor).summernote('editor.insertImage', data.url);
+			$(editor).summernote('editor.insertImage', ${root}+data.url);
 		}
 	});
 }
