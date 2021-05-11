@@ -127,9 +127,9 @@ public class ProductController {
 	  	return "product/modify_success";
 	  }
 	
-	@PostMapping("/register")
+	  @PostMapping("/register")
 	  public String productRegisterProc
-	  (@Valid @ModelAttribute("productDTO") ProductDTO productDTO, BindingResult result, MultipartFile file, HttpServletRequest request) throws IOException, Exception {
+	  (@Valid @ModelAttribute("productDTO") ProductDTO productDTO, BindingResult result, MultipartFile file, HttpServletRequest request, Model model) throws IOException, Exception {
 	  	
 	  	if(result.hasErrors()) {
 	  		return "product/register";
@@ -151,6 +151,9 @@ public class ProductController {
 	  	
 	  	productService.addProduct(productDTO);
 	  	
+	  	int pr_id = productService.getProductId(productDTO.getPr_name());
+	  	
+	  	model.addAttribute("pr_id", pr_id);
 	  	
 	  	return "product/register_success";
 	  }

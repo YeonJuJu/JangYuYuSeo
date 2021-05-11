@@ -71,4 +71,8 @@ public class ProductDAO {
 		productMapper.addProdcut(productDTO);
 	}
 	
+	public int getProductId(String pr_name) {
+		return productMapper.getProductId(pr_name);
+	}
+	
 }
