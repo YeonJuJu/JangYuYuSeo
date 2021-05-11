@@ -163,7 +163,10 @@ public class ProductController {
 		
 		String fileRoot = "C:\\Users\\uplay\\GitHub\\JangYuYuSeo\\JangYuYuSeo\\WebContent\\resources\\summernote_images\\";	//저장될 외부 파일 경로
 		
-		fileRoot = "C:\\Users\\uplay\\Github\\JangYuYuSeo\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\JangYuYuSeo\\resources\\summernote_images\\";
+		//fileRoot = "C:\\Users\\uplay\\Github\\JangYuYuSeo\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\JangYuYuSeo\\resources\\summernote_images\\";
+		
+
+		fileRoot = request.getSession().getServletContext().getRealPath("/")+"/resources/summernote_images/";
 		
 		String originalFileName = multipartFile.getOriginalFilename();	//오리지날 파일명
 		String extension = originalFileName.substring(originalFileName.lastIndexOf("."));	//파일 확장자
@@ -182,6 +185,6 @@ public class ProductController {
 			e.printStackTrace();
 		}
 		String a = jsonObject.toString();
-		return a;
+		return a; 
 	}
 }
