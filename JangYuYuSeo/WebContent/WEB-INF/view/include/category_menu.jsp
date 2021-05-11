@@ -19,7 +19,7 @@
 							alert("검색할 단어를 입력해 주세요.");
 							return;
 						}
-						location.href = "/JangYuYuSeo/product/search?keyword="+keyword;
+						location.href = "${root}product/search?keyword="+keyword;
 				}
 			</script>
 			<form class="form-inline ml-auto" style="margin-right:0px">

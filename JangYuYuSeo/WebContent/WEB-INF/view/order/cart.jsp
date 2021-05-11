@@ -102,6 +102,7 @@
 									<th style="font-weight: bold; font-size: 1em">Price</th>
 									<th style="font-weight: bold; font-size: 1em">Quantity</th>
 									<th style="font-weight: bold; font-size: 1em">total</th>
+									<th>&nbsp;</th>
 								</tr>
 							</thead>
 							
