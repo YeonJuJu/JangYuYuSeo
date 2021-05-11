@@ -49,4 +49,7 @@ public class ProductService {
 		productDAO.addProduct(productDTO);
 	}
 	
+	public int getProductId(String pr_name) {
+		return productDAO.getProductId(pr_name);
+	}
 }

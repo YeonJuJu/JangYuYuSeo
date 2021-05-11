@@ -50,5 +50,8 @@ public interface ProductMapper {
 	@Insert("insert into product_table VALUES(product_seq.nextval, #{pr_name}, #{pr_description}, #{pr_price}, #{pr_size}, "
 			+ "#{pr_color}, #{pr_detail}, #{pr_stock}, #{pr_sales}, TO_DATE(#{pr_date},'YYYYMMDD'), #{pr_category}, #{pr_image})")
 	public void addProdcut(ProductDTO productDTO);
+	
+	@Select("select pr_id from product_table where pr_name=#{pr_name}")
+	public int getProductId(String pr_name);
 
 } 
